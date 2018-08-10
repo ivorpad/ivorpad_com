@@ -1,40 +1,34 @@
-import React from 'react'
+import React from 'react';
 import { Link } from 'gatsby'
-
+import { Container, Topbar, Logo, LogoLink, TopbarContainer } from './styles'
 const Header = ({ siteTitle }) => (
-  <div
-    style={{
-      background: 'rebeccapurple',
-      marginBottom: '1.45rem',
-    }}
-  >
-    <div
-      style={{
-        margin: '0 auto',
-        maxWidth: 960,
-        padding: '1.45rem 1.0875rem',
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: 'white',
-            textDecoration: 'none',
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-      
-      <div className="menu menu__main">
-        <Link to="/about" component="About">
-          About
-        </Link>
-      </div>
+  <Topbar>
+    <Container>
+      <TopbarContainer>
+        <Logo>
+          <LogoLink to="/">{siteTitle}</LogoLink>
+        </Logo>
 
-    </div>
-  </div>
+        <div className="menu menu__main">
+          <Link to="/" exact activeClassName="active">
+            Home
+          </Link>
+          <Link to="/work" component="work" activeClassName="active">
+            Work
+          </Link>
+          <Link to="/writing" component="writing" activeClassName="active">
+            Writing
+          </Link>
+          <Link to="/about" component="about" activeClassName="active">
+            About
+          </Link>
+          <Link to="/contact" component="contact" activeClassName="active">
+            Contact
+          </Link>
+        </div>
+      </TopbarContainer>
+    </Container>
+  </Topbar>
 )
 
 export default Header

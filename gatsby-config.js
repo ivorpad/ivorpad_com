@@ -10,7 +10,7 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: 'Ivor Padilla',
+    title: 'Ivor',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -21,6 +21,12 @@ module.exports = {
       options: {
         spaceId: `${process.env.CONTENTFUL_SPACE_ID}`,
         accessToken: `${process.env.CONTENTFUL_ACCESS_TOKEN}`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`
       }
     }
   ],
