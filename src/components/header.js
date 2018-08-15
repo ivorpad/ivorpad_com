@@ -22,6 +22,9 @@ const Header = ({ siteTitle }) => (
           <Link to="/about" component="about" activeClassName="active">
             About
           </Link>
+          <Link to="/gear" component="gear" activeClassName="active">
+            Gear
+          </Link>
           <Link to="/contact" component="contact" activeClassName="active">
             Contact
           </Link>

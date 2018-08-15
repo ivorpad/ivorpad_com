@@ -1,7 +1,15 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/browser-apis/
- */
+exports.shouldUpdateScroll = args => {
+  const windowWidth = window.innerWidth
+  // Scroll position only matters on mobile as on larger screens, we use a
+  // modal.
+  if (windowWidth < 750) {
+    return true
+  } else {
+    return false
+  }
+}
 
-// You can delete this file if you're not using it
+exports.onInitialClientRender = () => {
+  console.log('ReactDOM.render has executed')
+  window.___IVORPAD_INITIAL_RENDER_COMPLETE = true
+}
