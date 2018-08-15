@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby';
 import Introduction from '../components/Introduction';
 import { graphql } from 'gatsby'
-import Layout from '../components/Layout'
+import Layout from '../components/layout'
 
 const IndexPage = (props) => (
   <Layout>

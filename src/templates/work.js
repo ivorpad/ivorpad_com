@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Layout from '../components/Layout'
 import { graphql, replace } from 'gatsby'
 import WorkDetail from '../templates/work-detail'
 export default class WorkTemplate extends Component {
