@@ -16,10 +16,6 @@ const style = {
   content: {
     border: `none`,
     background: `#F3F4F8`,
-    fontSize: `1.6em`,
-    fontFamily: `Merriweather`,
-    fontWeight: `300`,
-    padding: 0,
     width: `50%`,
     margin: `0 auto`,
     overflow: `auto`,
