@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { PageRenderer } from 'gatsby'
-import Layout from '../components/Layout'
+import Layout from '../components/layout'
 
 let Modal
 import(`../components/modal`).then(modal => {

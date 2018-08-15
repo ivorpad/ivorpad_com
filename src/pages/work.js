@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import Layout from '../components/Layout'
+import Layout from '../components/layout'
 import { graphql, Link, PageRenderer } from 'gatsby'
-import Modal from '../components/modal';
 
 
 export default class WorkPage extends Component {
