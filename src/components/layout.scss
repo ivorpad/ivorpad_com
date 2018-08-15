@@ -14,7 +14,9 @@ a {
 
 .content {
   p {
-    font-size: 1.8em;
+    font-family: $primary-font-serif;
+    font-size: 1.6em;
+    font-weight: 300;
   }
   a {
     color: $primary-blue;
@@ -38,7 +40,7 @@ a {
     border-radius: 5px;
     position: relative;
     padding: 4em 6em;
-    font-family: 'Merriweather', serif;
+    font-family: $primary-font-serif;
     font-weight: 300;
     line-height: 2;
     box-shadow: 0px 3px 0px 0px rgba(0,0,0,.1);
@@ -56,7 +58,7 @@ a {
 
   &__title {
     text-align: center;
-    font-family: 'Merriweather', serif;
+    font-family: $primary-font-serif;
     color: $primary-grey;
     font-weight: 300;
     padding: 1em 0 .2em 0;
@@ -67,7 +69,7 @@ a {
 }
 
 .menu a {
-  font-family: Montserrat, sans-serif;
+  font-family: $primary-font-sans-serif;
   color: $primary-black;
   text-decoration: none;
   margin-left: 25px;
@@ -84,4 +86,11 @@ a {
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 2em;
   grid-gap: 2em; /* firefox */
+}
+
+.ReactModal__Content p {
+ font-size: 1.6em;
+ font-weight: 300;
+ font-family: $primary-font-serif;
+ font-size: 1.6em;
 }

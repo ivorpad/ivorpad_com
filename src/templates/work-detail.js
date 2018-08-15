@@ -36,8 +36,10 @@ export default class WorkDetail extends Component {
 
     return (
       <Layout>
-        <h1>{title.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: body.childMarkdownRemark.html }} />
+        <div className="content">
+          <h1>{title.title}</h1>
+          <div dangerouslySetInnerHTML={{ __html: body.childMarkdownRemark.html }} />
+        </div>
       </Layout>
     )
   }
