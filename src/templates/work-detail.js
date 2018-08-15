@@ -28,7 +28,7 @@ export default class WorkDetail extends Component {
       return <>
           <PageRenderer location={{ pathname: `/work` }} />
           <Modal isOpen={isInModal} location={this.props.location}>
-            <h1>{title.title}</h1>
+            <h3>{title.title}</h3>
             <div dangerouslySetInnerHTML={{ __html: body.childMarkdownRemark.html }} />
           </Modal>
         </>
