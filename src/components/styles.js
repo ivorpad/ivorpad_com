@@ -30,8 +30,8 @@ export const TopbarContainer = styled.div`
 export const Topbar = styled.div`
   width: 100%;
   background: white;
-  padding-top: 1.2em;
-  padding-bottom: 1.2em;
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
   border-bottom: 1px solid #e8e8e8;
   -webkit-font-smoothing: subpixel-antialiased;
 `
@@ -49,6 +49,6 @@ export const LogoLink = styled(Link)`
 
 export const Logo = styled.h1`
   color: #3D3D3D;
-  font-size: 1.5em;
+  font-size: 1.8em;
   margin: 0;
 `

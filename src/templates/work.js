@@ -1,17 +1,24 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Layout from '../components/Layout'
-import { graphql } from 'gatsby'
+import { graphql, replace } from 'gatsby'
+import WorkDetail from '../templates/work-detail'
+export default class WorkTemplate extends Component {
 
-export default ({ data }) => {
-  const { title } = data.contentfulWork.title;
-  const { html: body } = data.contentfulWork.body.childMarkdownRemark;
+  state = {
+    isInModal: false
+  }
 
-  return (
-    <Layout>
-      <h1>{title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: body }} ></div>
-    </Layout>
-  )
+  componentDidMount = () => {
+    if (typeof this.props.location.state !== 'undefined' && this.props.location.state !== null && this.props.location.state.isInModal) {
+      this.setState({
+        isInModal: true
+      })
+    } 
+  }
+
+  render() {
+    return <WorkDetail data={this.props.data} location={this.props.location} isInModal={this.state.isInModal} />
+  }
 }
 
 export const query = graphql`
