@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Modal from "react-modal"
 import { push } from "gatsby"
-import Container from '../components/styles'
 
 Modal.setAppElement(`#___gatsby`);
 
@@ -15,26 +14,37 @@ const style = {
     backgroundColor: `rgba(0, 0, 0, 0.5)`,
   },
   content: {
-    //position: `absolute`,
     border: `none`,
-    background: `white`,
+    background: `#F3F4F8`,
+    fontSize: `1.6em`,
+    fontFamily: `Merriweather`,
+    fontWeight: `300`,
     padding: 0,
-    width: `60%`,
+    width: `50%`,
     margin: `0 auto`,
     overflow: `auto`,
     WebkitOverflowScrolling: `touch`,
     borderRadius: `0`,
-    padding: `3em`
+    padding: `3em`,
   },
 }
 
 export default class ItemsModal extends Component {
+
+  afterOpenModal = () => {
+    push({
+      ...this.props.location,
+      state: {}
+    })
+  }
+
   render() {
     return <Modal 
         isOpen={this.props.isOpen} 
         style={style}
         onRequestClose={() => push(`/work`)}
         contentLabel="Modal"
+        onAfterOpen={this.afterOpenModal}
       >
         {this.props.children}
     </Modal>
