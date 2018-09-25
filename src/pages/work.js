@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import Layout from '../components/layout'
-import { graphql, PageRenderer, Link } from 'gatsby'
-import { navigate } from "gatsby"
-//import { Link } from 'gatsby-link'
+import { graphql, Link } from 'gatsby'
 
 export default class WorkPage extends Component {
 
@@ -18,21 +16,14 @@ export default class WorkPage extends Component {
     return (
     <Layout>
       <div className="content grid">
-        {this.state.data.map(({node}, i) => {
-          return <div key={i} className="work__item">             
+        {this.state.data.map(({ node: post }) => {
+          return <div key={ post.id } className="work__item">             
               <h3 className="work__title">
-                <Link to = {
-                	`/work/${node.slug}`
-                }
-                state = {
-                	{
-                		isInModal: true
-                	}
-                } >
-                  {node.title.title}
+                <Link to={`/work/${post.slug}`} state={ {isInModal: true} } >
+                  {post.title.title}
                 </Link>
               </h3>
-              <img src={node.featuredImage.resize.src} alt="" />
+              <img src={post.featuredImage.resize.src} alt="" />
             </div>
         })}
       </div>
@@ -47,6 +38,7 @@ export const query = graphql`
       edges {
         node {
           slug
+          id
           title {
             title
           }
