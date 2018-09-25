@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import Modal from "react-modal"
-import { push } from "gatsby"
-
-Modal.setAppElement(`#___gatsby`);
-
+import { navigate, push } from "gatsby"
+console.log(push)
+Modal.setAppElement(`#___gatsby`)
 const style = {
   overlay: {
     position: `fixed`,
@@ -28,17 +27,18 @@ const style = {
 export default class ItemsModal extends Component {
 
   afterOpenModal = () => {
-    push({
-      ...this.props.location,
-      state: {}
-    })
+   //console.log(this.props)
+  //  navigate({
+  //    ...this.props.location,
+  //    state: {}
+  //  })
   }
 
   render() {
     return <Modal 
         isOpen={this.props.isOpen} 
         style={style}
-        onRequestClose={() => push(`/work`)}
+        onRequestClose={() => navigate(`/work`)}
         contentLabel="Modal"
         onAfterOpen={this.afterOpenModal}
       >
