@@ -27,11 +27,7 @@ const style = {
 export default class ItemsModal extends Component {
 
   afterOpenModal = () => {
-   //console.log(this.props)
-  //  navigate({
-  //    ...this.props.location,
-  //    state: {}
-  //  })
+    navigate( /* what to pass -> */ `` , { state: {} })
   }
 
   render() {
