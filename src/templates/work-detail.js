@@ -6,42 +6,38 @@ let Modal
 import(`../components/modal`).then(modal => {
   Modal = modal.default
 })
-
 let windowWidth;
+
 export default class WorkDetail extends Component {
 
   render() {
-    const {
-      body,
-      title
-    } = this.props.data.contentfulWork
+    const { body, title } = this.props.data.contentfulWork;
 
     let isInModal = false
     if (!windowWidth && typeof window !== `undefined`) {
       windowWidth = window.innerWidth
     }
-    if (this.props.isInModal && windowWidth > 750) {
+    if (this.props.location.state && this.props.location.state.isInModal && windowWidth > 750) {
       isInModal = true
     }
-
+    
     if (isInModal && Modal) {
       return <>
-          <PageRenderer location={{ pathname: `/work` }} />
-          <Modal isOpen={isInModal} location={this.props.location}>
-            <h3>{title.title}</h3>
-            <div dangerouslySetInnerHTML={{ __html: body.childMarkdownRemark.html }} />
-          </Modal>
-        </>
+        <PageRenderer location={{ pathname: `/work` }} />
+        <Modal isOpen={true} location={this.props.location}>
+          <h3>{title.title}</h3>
+          <div dangerouslySetInnerHTML={{ __html: body.childMarkdownRemark.html }} />
+        </Modal>
+      </>
     }
 
-    return (
-      <Layout>
-        <div className="content">
-          <h1>{title.title}</h1>
-          <div dangerouslySetInnerHTML={{ __html: body.childMarkdownRemark.html }} />
-        </div>
-      </Layout>
-    )
+
+    return <Layout>
+      <div className="content">
+        <h1>{title.title}</h1>
+        <div dangerouslySetInnerHTML={{ __html: body.childMarkdownRemark.html }} />
+      </div>
+    </Layout>
   }
-  
+
 }

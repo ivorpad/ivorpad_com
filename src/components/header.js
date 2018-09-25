@@ -10,7 +10,7 @@ const Header = ({ siteTitle }) => (
         </Logo>
 
         <div className="menu menu__main">
-          <Link to="/" exact activeClassName="active">
+          <Link to="/" exact="true" activeClassName="active">
             Home
           </Link>
           <Link to="/work" component="work" activeClassName="active">
