@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components'
 import { Link } from 'gatsby'
 
+
+
 const sizes = {
   extraLarge: 1200,
   large: 992,
@@ -9,6 +11,7 @@ const sizes = {
 }
 
 // Iterate through the sizes and create a media template
+/* eslint-disable-next-line no-unused-vars */
 const media = Object.keys(sizes).reduce((acc, label) => {
   acc[label] = (...args) => css`
     @media (max-width: ${sizes[label] / 16}em) {

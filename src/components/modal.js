@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Modal from "react-modal"
-import { navigate, push } from "gatsby"
-console.log(push)
+import { navigate } from "gatsby"
 Modal.setAppElement(`#___gatsby`)
 const style = {
   overlay: {
@@ -27,7 +26,7 @@ const style = {
 export default class ItemsModal extends Component {
 
   afterOpenModal = () => {
-    navigate( /* what to pass -> */ `` , { state: {} })
+    console.log('opened')
   }
 
   render() {
