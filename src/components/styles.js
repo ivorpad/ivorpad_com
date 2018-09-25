@@ -1,8 +1,6 @@
 import styled, { css } from 'styled-components'
 import { Link } from 'gatsby'
 
-
-
 const sizes = {
   extraLarge: 1200,
   large: 992,
