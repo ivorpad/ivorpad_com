@@ -48,7 +48,6 @@ const Introduction = ({ data }) => {
   const { title, featuredImage, content } = contentfulIntroduction
 
   const { name } = contentfulAuthor
-
   return (
     <IntroSection>
       <div className="content intro">

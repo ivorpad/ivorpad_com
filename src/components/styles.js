@@ -1,16 +1,26 @@
-import styled, { css } from 'styled-components'
-import { Link } from 'gatsby'
+import styled, { css, injectGlobal } from 'styled-components'
+import { lighten, darken } from 'polished'
 
 const sizes = {
-  extraLarge: 1200,
-  large: 992,
+  large: 1200,
+  desktop: 992,
   medium: 768,
   small: 576,
+};
+
+export const theme = {
+  main: {
+    black: "#3d3d3d",
+    blue: "#3d5afe",
+    grey: "#828282",
+    fontSerif: "'Merriweather', serif",
+    fontSansSerif: "'Montserrat', sans-serif"
+  }
 }
 
 // Iterate through the sizes and create a media template
 /* eslint-disable-next-line no-unused-vars */
-const media = Object.keys(sizes).reduce((acc, label) => {
+export const media = Object.keys(sizes).reduce((acc, label) => {
   acc[label] = (...args) => css`
     @media (max-width: ${sizes[label] / 16}em) {
       ${css(...args)};
@@ -19,37 +29,66 @@ const media = Object.keys(sizes).reduce((acc, label) => {
   return acc
 }, {});
 
+// Usage
+// ${media.small`
+//     background: red !important;
+// `}
+
+
 export const Container = styled.div`
   width: 60%;
   margin: 0 auto;
 `
-export const TopbarContainer = styled.div`
- display: flex;
- justify-content: space-between;
- align-items: center;
-`
-export const Topbar = styled.div`
-  width: 100%;
-  background: white;
-  padding-top: 1.5em;
-  padding-bottom: 1.5em;
-  border-bottom: 1px solid #e8e8e8;
-  -webkit-font-smoothing: subpixel-antialiased;
-`
 
-export const LogoLink = styled(Link)`
-  color: #3d3d3d;
-  font-weight: bold;
-  font-family: Merriweather, serif;
-  text-decoration: none;
+export const injectGlobalStyles = (theme) => {
+  return injectGlobal`
+      :root {
+        font-size: 62.5%;
+      }
+      body {
+        font-size: 1.6rem;
+        background: #F3F4F8;
+        color: ${theme.main.black};
+      }
+      a {
+        color: ${theme.main.blue};
+        text-decoration: none;
+      }
+      .content {
+        p {
+          font-family: ${theme.main.fontSerif};
+          font-size: 1.6rem;
+          font-weight: 300;
+        }
+        a {
+          border-bottom: 2px solid ${lighten(0.3, `${theme.main.blue}`)};
+          &:hover {
+            border-bottom-color: ${lighten(0.15, `${theme.main.blue}`)};
+            color: ${lighten(0.1, `${theme.main.blue}`)}
+          }
+        }
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 2em;
+        grid-gap: 2em; /* firefox */
+      }
+    `
 
-  &:hover {
-    color: #3d5afe;
-  }
-`
+}
 
-export const Logo = styled.h1`
-  color: #3D3D3D;
-  font-size: 1.8em;
-  margin: 0;
-`
+// .content {
+//   p {
+//     font-family: $primary-font-serif;
+//     font-size: 1.6rem;
+//     font-weight: 300;
+//   }
+//   a {
+//     border-bottom: 2px solid lighten($primary-blue, 30%);
+//     &:hover {
+//       border-bottom-color: lighten($primary-blue, 15%);
+//       color: darken($primary-blue, 10%)
+//     }
+//   }
+// }
