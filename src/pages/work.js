@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
 import Layout from '../components/layout'
-import { graphql, Link } from 'gatsby'
-import styled from 'styled-components'
-
-const WorkSection = styled.div`
-  margin-top: 30px;
-`
+import { graphql, Link } from 'gatsby';
+import { ThemeProvider } from 'styled-components';
+import { theme } from '../components/styles'
 
 export default class WorkPage extends Component {
   constructor(props) {
@@ -18,8 +15,8 @@ export default class WorkPage extends Component {
 
   render() {
     return (
-      <Layout>
-        <WorkSection>
+      <ThemeProvider theme={theme}>
+        <Layout>
           <div className="content grid">
             {this.state.data.map(({ node: post }) => {
               return (
@@ -34,8 +31,8 @@ export default class WorkPage extends Component {
               )
             })}
           </div>
-        </WorkSection>
-      </Layout>
+        </Layout>
+      </ThemeProvider>
     )
   }
 }
