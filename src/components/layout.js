@@ -17,10 +17,10 @@ injectGlobal`
   body {
     font-size: 1.6rem;
     background: #F3F4F8;
-    color: theme.main.black;
+    color: ${theme.main.black};
   }
   a {
-    color: theme.main.blue;
+    color: ${theme.main.blue};
     text-decoration: none;
   }
   .content {
@@ -39,7 +39,7 @@ injectGlobal`
   }
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 2em;
     grid-gap: 2em; /* firefox */
   }
@@ -53,7 +53,10 @@ const wrapperStyle = () => {
       display: flex;
     `
   } else {
-    return 'margin-top: 3rem'
+    return `
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+    `
   }
 }
 
