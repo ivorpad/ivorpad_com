@@ -5,6 +5,7 @@ import Layout from '../components/layout';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../components/styles'
 
+
 const IndexPage = (props) => (
 	<ThemeProvider theme={theme}>
 		<Layout>

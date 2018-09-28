@@ -6,19 +6,23 @@ import { theme } from '../components/styles'
 const Writing = ({data}) => {
   const { edges: posts } = data.allContentfulPost
 
- return (
-   <ThemeProvider theme={theme}>
+ return <ThemeProvider theme={theme}>
      <Layout>
        <div className="content">
-         {posts.map(({ node: post }, i) =>
+         {posts.map(({ node: post }, i) => (
            <div key={post.id} className={`content__item`}>
              <h1>{post.title.title}</h1>
-             <div className="post__content" dangerouslySetInnerHTML={{ __html: post.body.childMarkdownRemark.html }} /></div>
-         )}
+             <div
+               className="post__content"
+               dangerouslySetInnerHTML={{
+                 __html: post.body.childMarkdownRemark.html,
+               }}
+             />
+           </div>
+         ))}
        </div>
      </Layout>
    </ThemeProvider>
- )
     
 }
 
