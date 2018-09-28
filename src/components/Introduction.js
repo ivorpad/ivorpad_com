@@ -7,13 +7,14 @@ const IntroSection = styled.div`
     display: flex;
     align-items: center;
     width: 100%;
-    padding: 15em 0;
+    /* padding: 15em 0; */
     &__title {
       text-align: center;
       font-family: 'Merriweather', serif;
       color: grey;
       font-weight: 300;
       padding: 1em 0 0.2em 0;
+      font-size: 3.5rem;
       span {
         font-weight: 700;
       }
