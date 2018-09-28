@@ -1,15 +1,71 @@
 import React from 'react';
 import { Link } from 'gatsby'
-import { Container, Topbar, Logo, LogoLink, TopbarContainer } from './styles'
-const Header = ({ siteTitle }) => (
+import styled, {css} from 'styled-components';
+import { Container } from './styles';
+import { lighten } from 'polished';
+
+const TopbarContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+
+const Topbar = styled.div`
+  width: 100%;
+  background: white;
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+  border-bottom: 1px solid #e8e8e8;
+  -webkit-font-smoothing: subpixel-antialiased;
+  /* margin-bottom: 3rem; */
+`
+
+const Logo = styled.h1`
+  color: #3d3d3d;
+  font-size: 1.8rem;
+  margin: 0;
+`
+
+const LogoLink = styled(Link)`
+  color: #3d3d3d;
+  font-weight: bold;
+  font-family: Merriweather, serif;
+  text-decoration: none;
+
+  &:hover {
+    color: #3d5afe;
+  }
+`
+
+const borderBottom = css`
+  /* border-bottom: 2px solid ${lighten(0.3, `${props => props.theme.main.blue}`)}; */
+`
+
+const Menu = styled.div`
+  a {
+    font-family: sans-serif;
+    color: ${props => props.theme.main.black};
+    text-decoration: none;
+    margin-left: 25px;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    &:hover,
+    &.active {
+      color: ${props => props.theme.main.blue};
+      border-bottom: 2px solid ${lighten(0.3, '#3d5afe')};
+    }
+  }
+`
+
+
+const Header = ({ siteTitle, theme }) => (
   <Topbar>
     <Container>
       <TopbarContainer>
         <Logo>
           <LogoLink to="/">{siteTitle}</LogoLink>
         </Logo>
-
-        <div className="menu menu__main">
+        <Menu className="menu__main">
           <Link to="/" exact="true" activeClassName="active">
             Home
           </Link>
@@ -28,7 +84,7 @@ const Header = ({ siteTitle }) => (
           <Link to="/contact" component="contact" activeClassName="active">
             Contact
           </Link>
-        </div>
+        </Menu>
       </TopbarContainer>
     </Container>
   </Topbar>
