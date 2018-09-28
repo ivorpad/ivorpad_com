@@ -45,8 +45,10 @@ injectGlobal`
   }
 `
 
+const windowGlobal = typeof window !== 'undefined' && window
+
 const wrapperStyle = () => {
-  if (window.location.pathname === '/') {
+  if (windowGlobal.location.pathname === '/') {
     return `
       justify-content: center;
       flex-direction: column;
