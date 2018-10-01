@@ -37,10 +37,6 @@ const LogoLink = styled(Link)`
   }
 `
 
-const borderBottom = css`
-  /* border-bottom: 2px solid ${lighten(0.3, `${props => props.theme.main.blue}`)}; */
-`
-
 const Menu = styled.div`
   a {
     font-family: sans-serif;
@@ -66,7 +62,7 @@ const Header = ({ siteTitle, theme }) => (
           <LogoLink to="/">{siteTitle}</LogoLink>
         </Logo>
         <Menu className="menu__main">
-          <Link to="/" exact="true" activeClassName="active">
+          <Link to="/" activeClassName="active">
             Home
           </Link>
           <Link to="/work" component="work" activeClassName="active">

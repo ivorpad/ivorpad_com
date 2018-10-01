@@ -1,6 +1,16 @@
 import React from 'react';
 import Layout from '../components/layout'
+import styled from 'styled-components'
 import { graphql } from 'gatsby'
+
+const BlogPostWrapper = styled.div`
+  width: 80%;
+  margin: 0 auto;
+  background: white;
+  border-radius: 5px;
+  padding: 5rem;
+  box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.1);
+`
 
 export default ({data}) => {
   const { title } = data.contentfulPost.title;
@@ -8,8 +18,10 @@ export default ({data}) => {
 
   return (
     <Layout>
-      <h1>{title}</h1>
-      <div dangerouslySetInnerHTML={{__html: body}} ></div>
+      <BlogPostWrapper className="content">
+        <h1>{title}</h1>
+        <div dangerouslySetInnerHTML={{ __html: body }} ></div>
+      </BlogPostWrapper>
     </Layout>
   )
 }

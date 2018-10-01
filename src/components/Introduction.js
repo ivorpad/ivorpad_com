@@ -2,23 +2,32 @@ import React from 'react'
 import styled from 'styled-components';
 
 const IntroSection = styled.div`
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
   .intro {
-    /* padding: 15em 0; */
-    &__title {
-      text-align: center;
-      font-family: 'Merriweather', serif;
-      color: grey;
+    &__name {
+      font-family: ${props => props.theme.main.fontSerif};
+      color: ${props => props.theme.main.black};
       font-weight: 300;
-      padding: 1em 0 0.2em 0;
-      font-size: 3.5rem;
-      span {
-        font-weight: 700;
-      }
+      padding: 0em 0 0.5em 0;
+      font-size: 4.5rem;
+      margin-top: -5px;
+    }
+    &__content p {
+      font-size: 1.6rem;
+    }
+    &__name--upper-title {
+      text-transform: uppercase;
+      font-weight: 300;
+      color: grey;
+      font-family: ${props => props.theme.main.fontSansSerif};
+      font-size: 1.2rem;
+      margin-left: 4px;
+      display: inline-block;
+      font-weight: 400;
     }
     &__avatar {
       width: 100px;
@@ -36,7 +45,9 @@ const IntroSection = styled.div`
       width: 100%;
       border-radius: 5px;
       position: relative;
-      padding: 4em 6em;
+      padding: 10rem;
+      word-wrap: wrap;
+      overflow-wrap: break-word;
       font-family: $primary-font-serif;
       font-weight: 300;
       line-height: 2;
@@ -59,8 +70,9 @@ const Introduction = ({ data }) => {
             src={`${featuredImage.resize.src}`}
             alt="Avatar of Web Developer: Ivor Padilla"
           />
-          <h1 className="intro__title">
-            {title} <span>{name}</span>
+          <span className="intro__name--upper-title">Welcome, my name is</span>
+          <h1 className="intro__name">
+             Ivor Padilla
           </h1>
           <div
             className="intro__content"

@@ -5,7 +5,6 @@ import { Container } from './styles'
 import { ThemeProvider } from 'styled-components'
 import Header from './header'
 import Footer from './Footer'
-import './layout.scss'
 import styled, { injectGlobal } from 'styled-components'
 import { theme } from '../components/styles'
 import { lighten } from 'polished'
@@ -22,10 +21,11 @@ injectGlobal`
   a {
     color: ${theme.main.blue};
     text-decoration: none;
+    transition: color .15s linear;
   }
   .content {
     p {
-      font-family: 'Merriweather', serif;
+      font-family: ${theme.main.fontSerif};
       font-size: 1.6rem;
       font-weight: 300;
     }

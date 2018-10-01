@@ -21,10 +21,26 @@ const Card = styled(Link)`
   color: ${props => props.theme.main.black};
   &.card__item {
     border: none;
+
+    &:hover {
+      img {
+        filter: grayscale(0%);
+        opacity: 1;
+      }
+    }
+    img {
+      transition: 0.15s filter linear, .15s opacity linear;
+      -webkit-transition: 0.15s -webkit-filter linear, .15s opacity linear;
+      -moz-transition: 0.15s -moz-filter linear, .15s opacity linear;
+      -ms-transition: 0.15s -ms-filter linear, .15s opacity linear;
+      -o-transition: 0.15s -o-filter linear, .15s opacity linear;
+      filter: grayscale(100%);
+      opacity: 0.5;
+    }
     .card__title {
       &--no-tags {
         margin-top: 1.6rem;
-      } 
+      }
       font-size: 1.6rem;
       padding-bottom: 1rem;
     }
