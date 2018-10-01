@@ -46,7 +46,7 @@ injectGlobal`
 `
 
 const wrapperStyle = () => {
-  if (window !== undefined && window.location.pathname === '/') {
+  if (typeof(window) !== "undefined" && window.location.pathname === '/') {
     return `
       justify-content: center;
       flex-direction: column;
