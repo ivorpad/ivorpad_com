@@ -2,11 +2,12 @@ import React from 'react'
 import styled from 'styled-components';
 
 const IntroSection = styled.div`
-  .intro {
-    height: auto;
     display: flex;
     align-items: center;
     width: 100%;
+    height: 100%;
+    justify-content: center;
+  .intro {
     /* padding: 15em 0; */
     &__title {
       text-align: center;

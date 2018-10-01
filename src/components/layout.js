@@ -44,20 +44,20 @@ injectGlobal`
     grid-gap: 2em; /* firefox */
   }
 `
-const wrapperStyle = () => {
-  if (typeof(global) !== "undefined" && global.location.pathname === '/') {
-    return `
-      justify-content: center;
-      flex-direction: column;
-      display: flex;
-    `
-  } else {
-    return `
-    margin-top: 3rem;
-    margin-bottom: 5rem;
-    `
-  }
-}
+// const wrapperStyle = () => {
+//   if (typeof window !== "undefined" && window.location.pathname === '/') {
+//     return `
+//       justify-content: center;
+//       flex-direction: column;
+//       display: flex;
+//     `
+//   } else {
+//     return `
+//       margin-top: 3rem;
+//       margin-bottom: 5rem;
+//     `
+//   }
+// }
 
 const HomepageWrapper = styled.div`
   height: 100vh;
@@ -66,11 +66,13 @@ const HomepageWrapper = styled.div`
 
   .main {
     flex: 1;
-    ${wrapperStyle};
+    margin-top: 3rem;
+    margin-bottom: 5rem;
   }
 `
 
 class Layout extends React.Component {
+  
   render() {
 
     const { children } = this.props;
