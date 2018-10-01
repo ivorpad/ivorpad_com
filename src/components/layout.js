@@ -44,9 +44,8 @@ injectGlobal`
     grid-gap: 2em; /* firefox */
   }
 `
-
 const wrapperStyle = () => {
-  if (typeof(window) !== "undefined" && window.location.pathname === '/') {
+  if (typeof(global) !== "undefined" && global.location.pathname === '/') {
     return `
       justify-content: center;
       flex-direction: column;
@@ -73,6 +72,7 @@ const HomepageWrapper = styled.div`
 
 class Layout extends React.Component {
   render() {
+
     const { children } = this.props;
 
     return <StaticQuery query={graphql`
