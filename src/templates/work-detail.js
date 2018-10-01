@@ -1,6 +1,16 @@
 import React, { Component } from 'react'
 import { PageRenderer } from 'gatsby'
 import Layout from '../components/layout'
+import styled from 'styled-components'
+
+const WorkWrapper = styled.div`
+  width: 80%;
+  margin: 0 auto;
+  background: white;
+  border-radius: 5px;
+  padding: 5rem;
+  box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.1);
+`
 
 let Modal
 import(`../components/modal`).then(modal => {
@@ -33,10 +43,10 @@ export default class WorkDetail extends Component {
     }
 
     return <Layout>
-      <div className="content">
+      <WorkWrapper className="content">
         <h1>{title.title}</h1>
         <div dangerouslySetInnerHTML={{ __html: body.childMarkdownRemark.html }} />
-      </div>
+      </WorkWrapper>
     </Layout>
   }
 

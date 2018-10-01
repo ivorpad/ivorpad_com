@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { graphql } from 'gatsby'
 import WorkDetail from '../templates/work-detail'
+
 export default class WorkTemplate extends Component {
 
   render() {
@@ -12,11 +13,13 @@ export default class WorkTemplate extends Component {
     	isModal = true
     }
     
-    return <WorkDetail 
-      data={this.props.data} 
-      location={this.props.location}
-      isModal={isModal} 
-    />
+    return (
+      <WorkDetail
+        data={this.props.data}
+        location={this.props.location}
+        isModal={isModal}
+      />
+    )
   }
 }
 
