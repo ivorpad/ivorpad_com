@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
 import Layout from '../components/layout';
 import { graphql, Link } from 'gatsby';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../components/styles';
 import styled from 'styled-components';
-import  {lighten, darken} from 'polished';
+import  {lighten} from 'polished';
 import { truncate } from 'lodash'
+import CardIcons from '../components/CardIcons'
 
-library.add(faExternalLinkAlt, faGithub);
 
 const Card = styled.div`
   background: white;
@@ -62,6 +58,10 @@ const Card = styled.div`
     font-size: 1rem;
     margin-right: 1.5rem;
   }
+  .tooltip {
+    font-family: ${props => props.theme.main.fontSerif};
+    font-size: 1rem;
+  }
 `
 
 export default class WorkPage extends Component {
@@ -79,30 +79,33 @@ export default class WorkPage extends Component {
         <Layout>
           <div className="card content grid">
             {this.state.data.map(({ node: post }) => {
-              return (
-                <Card 
-                  key={post.id} 
-                  className="card__item"
-                >
-                <div className="card__meta">
-                    <Link to={`/work/${post.slug}`} state={{ isInModal: true }}> <h3 className={`card__title`}>{post.title.title}</h3> </Link>
-                  <div className="card__icons">
-                    <a href="#"><FontAwesomeIcon icon={['fab', 'github']} /></a>
-                    <a href="#"><FontAwesomeIcon icon="external-link-alt" /></a>
-                  </div>
-                </div>
+              return <Card key={post.id} className="card__item">
+                  <div className="card__meta">
+                    <Link to={`/work/${post.slug}`} state={{ isInModal: true }}>
+                      {' '}
+                      <h3 className={`card__title`}>
+                        {post.title.title}
+                      </h3>{' '}
+                    </Link>
 
-                <div className="card__content">
-                  <p>{truncate(post.body.body, {
-                    'length': 100,
-                    'omission': ' [...]'
-                  }) }</p>
-                </div>
-                {post.tags && post.tags.map((tag, i) => <span key={i} className="card__tag">#{tag}</span>)}
-                {/* {post.mainImage !== null && <img src={post.mainImage.resize.src} alt={post.mainImage.title} /> }
-                {post.tags && post.tags.map( (tag, i) => <span key={i} className="card__tag">{tag}</span>) } */}
+                  {post.externalLink !== null && post.gitRepoUrl !== null ? <CardIcons post={post} /> : null }
+                    
+                  </div>
+
+                  <div className="card__content">
+                    <p>
+                      {truncate(post.body.body, {
+                        length: 100,
+                        omission: ' [...]',
+                      })}
+                    </p>
+                  </div>
+                  {post.tags && post.tags.map((tag, i) => (
+                      <span key={i} className="card__tag">
+                        #{tag}
+                      </span>
+                    ))}
                 </Card>
-              )
             })}
           </div>
         </Layout>
@@ -121,6 +124,9 @@ export const query = graphql`
           slug
           id
           tags
+          externalLink
+          gitRepoUrl
+          isInPrivateRepo
           title {
             title
           }
