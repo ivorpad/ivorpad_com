@@ -53,6 +53,9 @@ const Menu = styled.div`
   }
 `
 
+const isActive = ({ isPartiallyCurrent}) => {
+  return isPartiallyCurrent ? { className: 'active' } : null
+}
 
 const Header = ({ siteTitle, theme }) => (
   <Topbar>
@@ -65,13 +68,13 @@ const Header = ({ siteTitle, theme }) => (
           <Link to="/" activeClassName="active">
             Home
           </Link>
-          <Link to="/work" component="work" activeClassName="active">
+          <Link to="/work" getProps={isActive} component="work" activeClassName="active">
             Work
           </Link>
-          <Link to="/writing" component="writing" activeClassName="active">
+          <Link to="/writing" getProps={isActive} component="writing" activeClassName="active">
             Writing
           </Link>
-          <Link to="/about" component="about" activeClassName="active">
+          <Link to="/about" getProps={isActive} component="about" activeClassName="active">
             About
           </Link>
           <Link to="/gear" component="gear" activeClassName="active">

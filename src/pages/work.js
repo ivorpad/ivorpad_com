@@ -21,7 +21,6 @@ const Card = styled(Link)`
   color: ${props => props.theme.main.black};
   &.card__item {
     border: none;
-
     &:hover {
       img {
         filter: grayscale(0%);
@@ -74,18 +73,15 @@ export default class WorkPage extends Component {
           <div className="card content grid">
             {this.state.data.map(({ node: post }) => {
               return (
-
                 <Card 
                   key={post.id} 
                   to={`/work/${post.slug}`} 
                   state={{ isInModal: true }}
                   className="card__item"
                 >
-
-                  {post.mainImage !== null && <img src={post.mainImage.resize.src} alt={post.mainImage.title} /> }
-
-                  {post.tags && post.tags.map( (tag, i) => <span key={i} className="card__tag">{tag}</span>) }
-                  <h3 className={`card__title card__title${post.tags === null && '--no-tags'}`}>{post.title.title}</h3>
+                {post.mainImage !== null && <img src={post.mainImage.resize.src} alt={post.mainImage.title} /> }
+                {post.tags && post.tags.map( (tag, i) => <span key={i} className="card__tag">{tag}</span>) }
+                <h3 className={`card__title card__title${post.tags === null && '--no-tags'}`}>{post.title.title}</h3>
                 </Card>
               )
             })}
