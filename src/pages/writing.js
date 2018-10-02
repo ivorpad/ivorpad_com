@@ -28,6 +28,7 @@ const WritingWrapper = styled.div`
     border: none;
     font-weight: bold;
     color: ${props => props.theme.main.black};
+    font-family: ${props => props.theme.main.fontSerif};
   }
 `
 
