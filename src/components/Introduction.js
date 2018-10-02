@@ -57,7 +57,7 @@ const IntroSection = styled.div`
 `
 
 const Introduction = ({ data }) => {
-  const { contentfulIntroduction, contentfulAuthor } = data
+  const { contentfulIntroduction } = data
   const { featuredImage, content } = contentfulIntroduction
   return (
     <IntroSection>

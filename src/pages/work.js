@@ -82,10 +82,9 @@ export default class WorkPage extends Component {
               return <Card key={post.id} className="card__item">
                   <div className="card__meta">
                     <Link to={`/work/${post.slug}`} state={{ isInModal: true }}>
-                      {' '}
                       <h3 className={`card__title`}>
                         {post.title.title}
-                      </h3>{' '}
+                      </h3>
                     </Link>
 
                   {post.externalLink !== null && post.gitRepoUrl !== null ? <CardIcons post={post} /> : null }
