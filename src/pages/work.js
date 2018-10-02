@@ -1,59 +1,66 @@
-import React, { Component } from 'react'
-import Layout from '../components/layout'
+import React, { Component } from 'react';
+import Layout from '../components/layout';
 import { graphql, Link } from 'gatsby';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { ThemeProvider } from 'styled-components';
-import { theme } from '../components/styles'
-import styled from 'styled-components'
-import  {lighten, darken} from 'polished'
+import { theme } from '../components/styles';
+import styled from 'styled-components';
+import  {lighten, darken} from 'polished';
+import { truncate } from 'lodash'
 
-const Card = styled(Link)`
+library.add(faExternalLinkAlt, faGithub);
+
+const Card = styled.div`
   background: white;
   border-radius: 5px;
-  img {
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    width: 100%;
-    object-fit: cover;
-    margin-bottom: 0;
-  }
+  padding: 3rem;
   text-decoration: none;
-  text-align: center;
   color: ${props => props.theme.main.black};
+  box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.1);
   &.card__item {
-    border: none;
-    &:hover {
-      img {
-        filter: opacity(100%) grayscale(0%);
-        /* opacity: 1; */
+    a {
+      color: ${props => props.theme.main.black};
+      &:hover {
+        color: ${props => props.theme.main.blue};
       }
     }
-    img {
-      transition: 0.15s filter linear, .15s opacity linear;
-      -webkit-transition: 0.15s -webkit-filter linear, .15s opacity linear;
-      -moz-transition: 0.15s -moz-filter linear, .15s opacity linear;
-      -ms-transition: 0.15s -ms-filter linear, .15s opacity linear;
-      -o-transition: 0.15s -o-filter linear, .15s opacity linear;
-      filter: opacity(50%) grayscale(100%);
-    }
-    .card__title {
-      &--no-tags {
-        margin-top: 1.6rem;
+    .card__meta {
+      display: flex;
+      justify-content: space-between;
+      a {
+        border: none;
       }
-      font-size: 1.6rem;
-      padding-bottom: 1rem;
-    }
-    .card__tag {
-      font-family: ${props => props.theme.main.fontSansSerif};
-      color: ${props => lighten(0.15, props.theme.main.black)};
-      font-size: 1.1rem;
-      padding: 0.08rem 1rem;
-      background: ${darken(0.02, '#f1f1f1')};
-      margin: 1.9rem 0.5rem 1rem 0.5rem;
-      display: inline-block;
-      border-radius: 3px;
+      .card__title {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+      }
+      .card__icons {
+        a {
+          color: grey;
+          &:hover {
+            color: ${lighten(0.15, 'grey')};
+          }
+        }
+        svg {
+          margin-left: 1.2rem;
+        }
+      }
     }
   }
-  box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.1);
+
+  .card__content p {
+    font-size: 1.4rem;
+    color: ${props => lighten(0.1, props.theme.main.black)};
+  }
+  .card__tag {
+    color: grey;
+    font-family: ${props => props.theme.main.fontSansSerif};
+    font-size: 1rem;
+    margin-right: 1.5rem;
+  }
 `
 
 export default class WorkPage extends Component {
@@ -74,13 +81,25 @@ export default class WorkPage extends Component {
               return (
                 <Card 
                   key={post.id} 
-                  to={`/work/${post.slug}`} 
-                  state={{ isInModal: true }}
                   className="card__item"
                 >
-                {post.mainImage !== null && <img src={post.mainImage.resize.src} alt={post.mainImage.title} /> }
-                {post.tags && post.tags.map( (tag, i) => <span key={i} className="card__tag">{tag}</span>) }
-                <h3 className={`card__title card__title${post.tags === null && '--no-tags'}`}>{post.title.title}</h3>
+                <div className="card__meta">
+                    <Link to={`/work/${post.slug}`} state={{ isInModal: true }}> <h3 className={`card__title`}>{post.title.title}</h3> </Link>
+                  <div className="card__icons">
+                    <a href="#"><FontAwesomeIcon icon={['fab', 'github']} /></a>
+                    <a href="#"><FontAwesomeIcon icon="external-link-alt" /></a>
+                  </div>
+                </div>
+
+                <div className="card__content">
+                  <p>{truncate(post.body.body, {
+                    'length': 100,
+                    'omission': ' [...]'
+                  }) }</p>
+                </div>
+                {post.tags && post.tags.map((tag, i) => <span key={i} className="card__tag">#{tag}</span>)}
+                {/* {post.mainImage !== null && <img src={post.mainImage.resize.src} alt={post.mainImage.title} /> }
+                {post.tags && post.tags.map( (tag, i) => <span key={i} className="card__tag">{tag}</span>) } */}
                 </Card>
               )
             })}
@@ -105,6 +124,7 @@ export const query = graphql`
             title
           }
           body {
+            body
             childMarkdownRemark {
               html
             }
