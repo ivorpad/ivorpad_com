@@ -54,6 +54,7 @@ const Card = styled.div`
   .card__content p {
     font-size: 1.4rem;
     color: ${props => lighten(0.1, props.theme.main.black)};
+    line-height: 2.5rem;
   }
   .card__tag {
     color: grey;
