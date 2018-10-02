@@ -25,7 +25,9 @@ const WritingWrapper = styled.div`
     font-family: ${props => props.theme.main.fontSansSerif};
   }
   .post__link {
+    border: none;
     font-weight: bold;
+    color: ${props => props.theme.main.black};
   }
 `
 
