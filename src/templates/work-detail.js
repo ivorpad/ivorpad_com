@@ -21,7 +21,6 @@ let windowWidth;
 export default class WorkDetail extends Component {
 
   render() {
-    console.log(this.props)
     const { body, title } = this.props.data.contentfulWork;
 
     let isInModal = false
@@ -36,8 +35,10 @@ export default class WorkDetail extends Component {
       return <>
         <PageRenderer location={{ pathname: `/work` }} />
         <Modal isOpen={true} location={this.props.location}>
-          <h3>{title.title}</h3>
-          <div dangerouslySetInnerHTML={{ __html: body.childMarkdownRemark.html }} />
+         <div className="content">
+            <h3>{title.title}</h3>
+            <div dangerouslySetInnerHTML={{ __html: body.childMarkdownRemark.html }} />
+          </div>
         </Modal>
       </>
     }

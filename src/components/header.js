@@ -39,7 +39,7 @@ const LogoLink = styled(Link)`
 
 const Menu = styled.div`
   a {
-    font-family: sans-serif;
+    font-family: ${ props => props.theme.main.fontSansSerif };
     color: ${props => props.theme.main.black};
     text-decoration: none;
     margin-left: 25px;
