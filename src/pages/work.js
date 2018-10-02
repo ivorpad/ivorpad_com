@@ -23,8 +23,8 @@ const Card = styled(Link)`
     border: none;
     &:hover {
       img {
-        filter: grayscale(0%);
-        opacity: 1;
+        filter: opacity(100%) grayscale(0%);
+        /* opacity: 1; */
       }
     }
     img {
@@ -33,8 +33,7 @@ const Card = styled(Link)`
       -moz-transition: 0.15s -moz-filter linear, .15s opacity linear;
       -ms-transition: 0.15s -ms-filter linear, .15s opacity linear;
       -o-transition: 0.15s -o-filter linear, .15s opacity linear;
-      filter: grayscale(100%);
-      opacity: 0.5;
+      filter: opacity(50%) grayscale(100%);
     }
     .card__title {
       &--no-tags {
