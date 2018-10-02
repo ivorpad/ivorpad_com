@@ -11,7 +11,7 @@ const FooterWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   color: ${props => lighten(0.2, props.theme.main.black)};
-  font-weight: 300;
+  /* font-weight: 300; */
   a {
     border-bottom: 2px solid ${props => lighten(0.3, props.theme.main.blue)};
     &:hover {

@@ -24,7 +24,7 @@ const IntroSection = styled.div`
       font-weight: 300;
       color: grey;
       font-family: ${props => props.theme.main.fontSansSerif};
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       margin-left: 4px;
       display: inline-block;
       font-weight: 400;

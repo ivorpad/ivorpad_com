@@ -34,7 +34,8 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write '**/*.js'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "./deploy"
   },
   "devDependencies": {
     "@fortawesome/free-solid-svg-icons": "^5.3.1",
