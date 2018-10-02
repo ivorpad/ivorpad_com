@@ -1,5 +1,4 @@
-import styled, { css, injectGlobal } from 'styled-components'
-import { lighten, darken } from 'polished'
+import styled, { css } from 'styled-components'
 
 const sizes = {
   extraLarge: 1800,
