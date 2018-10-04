@@ -22,7 +22,7 @@ export const theme = {
 /* eslint-disable-next-line no-unused-vars */
 export const media = Object.keys(sizes).reduce((acc, label) => {
   acc[label] = (...args) => css`
-    @media (max-width: ${sizes[label] / 16}em) {
+    @media (min-width: ${sizes[label] / 16}em) {
       ${css(...args)};
     }
   `
@@ -31,11 +31,25 @@ export const media = Object.keys(sizes).reduce((acc, label) => {
 
 
 export const Container = styled.div`
-  width: 60%;
+  width: 80%;
 
-  ${media.large`
+
+  ${media.small`
     width: 80%;
   `}
+
+  ${media.medium`
+    width: 60%;
+  `}
+
+  ${media.large`
+    width: 70%;  
+  `} 
+
+  ${media.extraLarge`
+    width: 780%;
+  `} 
+
 
   margin: 0 auto;
 `

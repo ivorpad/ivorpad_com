@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
-
+import { media } from '../components/styles'
+ 
 const IntroSection = styled.div`
   display: flex;
   align-items: center;
@@ -15,9 +16,6 @@ const IntroSection = styled.div`
       padding: 0em 0 0.5em 0;
       font-size: 4.5rem;
       margin-top: -5px;
-    }
-    &__content p {
-      font-size: 1.6rem;
     }
     &__name--upper-title {
       text-transform: uppercase;
@@ -45,13 +43,49 @@ const IntroSection = styled.div`
       width: 100%;
       border-radius: 5px;
       position: relative;
-      padding: 10rem;
+
+       ${media.small`
+        padding: 6rem; 
+      `}
+
+       ${media.medium`
+        padding: 6rem; 
+      `}
+
+       ${media.large`
+        padding: 6rem; 
+      `} 
+
+       ${media.extraLarge`
+        padding: 10rem;
+      `} 
+      
+      padding: 3rem;
       word-wrap: wrap;
       overflow-wrap: break-word;
-      font-family: $primary-font-serif;
       font-weight: 300;
-      line-height: 2;
+      /* line-height: 2; */
       box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.1);
+      p {
+      
+      ${media.small`
+        font-size: 1.6rem; 
+      `}
+
+      ${media.medium`
+        font-size: 1.6rem; 
+      `}
+
+      ${media.large`
+        font-size: 1.8rem; 
+      `} 
+
+      ${media.extraLarge`
+        font-size: 1.8rem; 
+      `} 
+      
+        font-size: 1.6rem;
+      }
     }
   }
 `
@@ -59,28 +93,21 @@ const IntroSection = styled.div`
 const Introduction = ({ data }) => {
   const { contentfulIntroduction } = data
   const { featuredImage, content } = contentfulIntroduction
-  return (
-    <IntroSection>
+  return <IntroSection>
       <div className="content intro">
         <div className="intro__card">
-          <img
-            className="intro__avatar"
-            src={`${featuredImage.resize.src}`}
-            alt="Avatar of Web Developer: Ivor Padilla"
-          />
-          <span className="intro__name--upper-title">Welcome, my name is</span>
-          <h1 className="intro__name">
-             Ivor Padilla
-          </h1>
+          <img className="intro__avatar" src={`${featuredImage.resize.src}`} alt="Avatar of Web Developer: Ivor Padilla" />
+          <span className="intro__name--upper-title">
+            Welcome, my name is
+          </span>
+          <h1 className="intro__name">Ivor Padilla</h1>
           <div
             className="intro__content"
             dangerouslySetInnerHTML={{ __html: content.childMarkdownRemark.html }}
           />
         </div>
-
       </div>
     </IntroSection>
-  )
 }
 
 export default Introduction

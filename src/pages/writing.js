@@ -6,7 +6,7 @@ import moment from 'moment'
 import { Link } from 'gatsby'
 
 const WritingWrapper = styled.div`
-  width: 80%;
+  width: 60%;
   margin: 0 auto;
   .post__item {
     margin-bottom: 3rem;

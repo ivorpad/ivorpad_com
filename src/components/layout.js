@@ -7,7 +7,8 @@ import Header from './header'
 import Footer from './Footer'
 import styled, { injectGlobal } from 'styled-components'
 import { theme } from '../components/styles'
-import { lighten } from 'polished'
+import { lighten } from 'polished';
+
 
 injectGlobal`
   :root {
@@ -17,17 +18,21 @@ injectGlobal`
     font-size: 1.6rem;
     background: #F3F4F8;
     color: ${theme.main.black};
+    line-height: 1.8;
   }
   a {
     color: ${theme.main.blue};
     text-decoration: none;
     transition: color .15s linear;
   }
+  code {
+    font-size: 1.4rem
+  }
   .content {
     p {
-      font-family: ${theme.main.fontSerif};
-      font-size: 1.6rem;
+      font-family: ${theme.main.fontSansSerif};
       font-weight: 300;
+      line-height: 1.8;
     }
     a {
       border-bottom: 2px solid ${lighten(0.3, theme.main.blue)};

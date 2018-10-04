@@ -3,6 +3,13 @@ const Promise = require(`bluebird`);
 const path = require(`path`);
 const slash = require(`slash`);
 
+exports.onCreateWebpackConfig = ({ stage, actions }) => {
+  actions.setWebpackConfig({
+    devtool: false
+  })
+
+}
+
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 

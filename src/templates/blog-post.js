@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { graphql } from 'gatsby'
 
 const BlogPostWrapper = styled.div`
-  width: 80%;
+  width: 60%;
   margin: 0 auto;
   background: white;
   border-radius: 5px;
