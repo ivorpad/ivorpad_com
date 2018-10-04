@@ -8,7 +8,7 @@ const BlogPostWrapper = styled.div`
   margin: 0 auto;
   background: white;
   border-radius: 5px;
-  padding: 5rem;
+  padding: 3rem;
   box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.1);
 `
 

@@ -34,6 +34,7 @@ const Card = styled.div`
         margin-bottom: 1.5rem;
       }
       .card__icons {
+        display: flex;
         a {
           color: grey;
           &:hover {

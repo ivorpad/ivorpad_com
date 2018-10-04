@@ -31,7 +31,7 @@ export const media = Object.keys(sizes).reduce((acc, label) => {
 
 
 export const Container = styled.div`
-  width: 80%;
+  width: 60%;
 
 
   ${media.small`
@@ -43,11 +43,11 @@ export const Container = styled.div`
   `}
 
   ${media.large`
-    width: 70%;  
+    width: 60%;  
   `} 
 
   ${media.extraLarge`
-    width: 780%;
+    width: 60%;
   `} 
 
 
