@@ -14,7 +14,10 @@ const IntroSection = styled.div`
       color: ${props => props.theme.main.black};
       font-weight: 300;
       padding: 0em 0 0.5em 0;
-      font-size: 4.5rem;
+      font-size: 2.5rem;
+      ${media.medium`
+        font-size: 4.5rem;
+      `}
       margin-top: -5px;
     }
     &__name--upper-title {
@@ -22,22 +25,33 @@ const IntroSection = styled.div`
       color: grey;
       font-family: ${props => props.theme.main.fontSansSerif};
       font-size: 1.4rem;
-      margin-left: 4px;
+      
       display: inline-block;
       font-weight: 500;
       ${media.medium`
+        margin-left: 4px;
         font-weight: 400;
       `}
     }
     &__avatar {
-      width: 100px;
-      height: 100px;
-      position: absolute;
-      left: 50%;
-      top: -50px;
-      transform: translateX(-50%);
       box-shadow: 0px 0px 0px 4px rgba(61, 61, 61, 0.1);
       border-radius: 5px;
+      float: left;
+      width: 50px;
+      height: 50px;
+      margin-right: 2rem;
+      margin-top: .5rem;
+      
+      ${media.medium`
+        width: 100px;
+        height: 100px;
+        float: none;
+        position: absolute;
+        left: 50%;
+        top: -50px;
+        transform: translateX(-50%);
+        margin: 0;
+      `}
     }
 
     &__card {
