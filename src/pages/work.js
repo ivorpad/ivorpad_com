@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from '../components/styles';
 import styled from 'styled-components';
 import  {lighten} from 'polished';
-import { truncate } from 'lodash'
+import truncate from 'lodash/truncate'
 import CardIcons from '../components/CardIcons'
 
 
@@ -34,7 +34,7 @@ const Card = styled.div`
         margin-bottom: 1.5rem;
       }
       .card__icons {
-        display: flex;
+        display:flex;
         a {
           color: grey;
           &:hover {

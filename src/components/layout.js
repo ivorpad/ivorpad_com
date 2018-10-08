@@ -23,7 +23,7 @@ injectGlobal`
   a {
     color: ${theme.main.blue};
     text-decoration: none;
-    transition: color .15s linear;
+    transition: all .15s linear, border .15s ease-in-out;
   }
   code {
     font-size: 1.4rem
