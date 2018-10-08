@@ -6,7 +6,7 @@ import { ThemeProvider } from 'styled-components'
 import Header from './header'
 import Footer from './Footer'
 import styled, { injectGlobal } from 'styled-components'
-import { theme } from '../components/styles'
+import { theme, media } from '../components/styles'
 import { lighten } from 'polished';
 
 
@@ -31,7 +31,10 @@ injectGlobal`
   .content {
     p {
       font-family: ${theme.main.fontSansSerif};
-      font-weight: 300;
+      font-weight: 500;
+      ${media.medium`
+        font-weight: 300;
+      `}
       line-height: 1.8;
     }
     a {

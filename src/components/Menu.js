@@ -30,7 +30,7 @@ const NavBar = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  position: relative;
+
 
   @media (min-width: 768px) {
     flex-direction: row;
@@ -50,6 +50,7 @@ const NavBar = styled.div`
           a {
             border-bottom: 2px solid white;
             padding: 0px;
+            font-size: 1.2rem;
             &.active {
               color: ${props => props.theme.main.blue};
               border-bottom: 2px solid
@@ -66,7 +67,6 @@ const NavBar = styled.div`
     }
     .navbar__toggle {
       display: none;
-      padding: 0;
     }
     .navbar__brand {
       padding: 0;
@@ -84,6 +84,9 @@ const Navigation = styled.nav`
     top: 0;
     right: 0;
     line-height: 0;
+    padding: 10px;
+    border: 1px solid;
+    margin-top: -10px;
   }
 
   .navbar__menu {
@@ -103,7 +106,7 @@ const Navigation = styled.nav`
         padding: 10px 0;
         color: ${props => props.theme.main.black};
         text-transform: uppercase;
-        font-size: 1.2rem;
+        font-size: 1.4rem;
 
         &:hover {
           color: ${props => props.theme.main.blue};

@@ -2,9 +2,13 @@ import React, { Component } from 'react'
 import { PageRenderer } from 'gatsby'
 import Layout from '../components/layout'
 import styled from 'styled-components'
+import { media } from '../components/styles'
 
 const WorkWrapper = styled.div`
+${media.medium`
   width: 80%;
+`}
+  width: 100%;
   margin: 0 auto;
   background: white;
   border-radius: 5px;

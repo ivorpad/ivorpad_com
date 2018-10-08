@@ -19,13 +19,15 @@ const IntroSection = styled.div`
     }
     &__name--upper-title {
       text-transform: uppercase;
-      font-weight: 300;
       color: grey;
       font-family: ${props => props.theme.main.fontSansSerif};
       font-size: 1.4rem;
       margin-left: 4px;
       display: inline-block;
-      font-weight: 400;
+      font-weight: 500;
+      ${media.medium`
+        font-weight: 400;
+      `}
     }
     &__avatar {
       width: 100px;
@@ -64,25 +66,24 @@ const IntroSection = styled.div`
       word-wrap: wrap;
       overflow-wrap: break-word;
       font-weight: 300;
-      /* line-height: 2; */
       box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.1);
       p {
       
-      ${media.small`
-        font-size: 1.6rem; 
-      `}
+        ${media.small`
+          font-size: 1.6rem; 
+        `}
 
-      ${media.medium`
-        font-size: 1.6rem; 
-      `}
+        ${media.medium`
+          font-size: 1.6rem; 
+        `}
 
-      ${media.large`
-        font-size: 1.8rem; 
-      `} 
+        ${media.large`
+          font-size: 1.8rem; 
+        `} 
 
-      ${media.extraLarge`
-        font-size: 1.8rem; 
-      `} 
+        ${media.extraLarge`
+          font-size: 1.8rem; 
+        `} 
       
         font-size: 1.6rem;
       }

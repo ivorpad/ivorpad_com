@@ -16,10 +16,7 @@ const Topbar = styled.div`
 const Header = ({ siteTitle, theme }) => (
   <Topbar>
     <Container>
-      
-      
         <Menu siteTitle={siteTitle} />
-
     </Container>
   </Topbar>
 )

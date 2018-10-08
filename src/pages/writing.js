@@ -4,11 +4,14 @@ import styled, { ThemeProvider } from 'styled-components'
 import { theme } from '../components/styles'
 import moment from 'moment'
 import { Link } from 'gatsby'
+import { media } from '../components/styles'
 
 const WritingWrapper = styled.div`
-  width: 60%;
+  width: 100%;
   margin: 0 auto;
-  .post__item {
+  ${media.medium`
+    width: 60%;
+  `} .post__item {
     margin-bottom: 3rem;
     background: white;
     border-radius: 5px;
@@ -16,8 +19,12 @@ const WritingWrapper = styled.div`
     box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.1);
     font-size: 1.8rem;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    ${media.medium`
+      align-items: center;
+      justify-content: space-between; 
+      flex-direction: row;
+    `};
   }
   .post__date {
     color: grey;

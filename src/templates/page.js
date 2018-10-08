@@ -1,12 +1,17 @@
 import React from 'react';
 import Layout from '../components/layout'
 import { graphql } from 'gatsby'
-
-
+import { media } from '../components/styles'
 import styled from 'styled-components'
 
 const PageWrapper = styled.div`
-  width: 60%;
+ 
+  width: 100%;
+
+  ${media.medium`
+    width: 60%;
+  `}
+
   margin: 0 auto;
   background: white;
   border-radius: 5px;
