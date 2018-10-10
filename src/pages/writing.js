@@ -36,6 +36,9 @@ const WritingWrapper = styled.div`
     font-weight: bold;
     color: ${props => props.theme.main.black};
     font-family: ${props => props.theme.main.fontSerif};
+    &:hover {
+      color: ${props => props.theme.main.blue};
+    }
   }
 `
 

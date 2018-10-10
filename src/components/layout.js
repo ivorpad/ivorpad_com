@@ -9,6 +9,27 @@ import styled, { injectGlobal } from 'styled-components'
 import { theme, media } from '../components/styles'
 import { lighten } from 'polished';
 
+const ios = () => {
+  var iDevices = [
+    'iPad Simulator',
+    'iPhone Simulator',
+    'iPod Simulator',
+    'iPad',
+    'iPhone',
+    'iPod'
+  ];
+
+  if(typeof(navigator) === "undefined") return;
+
+  if (!!navigator.platform) {
+    while (iDevices.length) {
+      if (navigator.platform === iDevices.pop()) { return true; }
+    }
+  }
+
+  return false;
+}
+
 
 injectGlobal`
   :root {
@@ -31,7 +52,7 @@ injectGlobal`
   .content {
     p {
       font-family: ${theme.main.fontSansSerif};
-      font-weight: 500;
+      font-weight: ${ ios() ? 500 : 300 };
       ${media.medium`
         font-weight: 300;
       `}
