@@ -3,6 +3,7 @@ import Layout from '../components/layout'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import { media } from '../components/styles'
+import Helmet from 'react-helmet'
 
 const BlogPostWrapper = styled.div`
   width: 100%;
@@ -22,27 +23,31 @@ export default ({data}) => {
   const { title } = data.contentfulPost.title;
   const { html: body } = data.contentfulPost.body.childMarkdownRemark;
 
-  return (
-    <Layout>
+  return <Layout>
+    <Helmet title={`${data.site.siteMetadata.title} | ${title}`} />
       <BlogPostWrapper className="content">
-        <h1>{title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: body }} ></div>
+        <h2>{title}</h2>
+        <div dangerouslySetInnerHTML={{ __html: body }} />
       </BlogPostWrapper>
     </Layout>
-  )
 }
 
-export const query = graphql `
-    query blogQuery($slug: String!) {
-      contentfulPost(slug: { eq: $slug } ) {
-        body {
-          childMarkdownRemark {
-            html
-          }
-        }
-        title {
-          title
+export const blogQuery = graphql `
+  query blogQuery($slug: String!) {
+    contentfulPost(slug: { eq: $slug } ) {
+      body {
+        childMarkdownRemark {
+          html
         }
       }
+      title {
+        title
+      }
     }
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
 `

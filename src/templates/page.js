@@ -3,6 +3,7 @@ import Layout from '../components/layout'
 import { graphql } from 'gatsby'
 import { media } from '../components/styles'
 import styled from 'styled-components'
+import Helmet from 'react-helmet'
 
 const PageWrapper = styled.div`
  
@@ -23,27 +24,30 @@ export default ({ data }) => {
   const { title } = data.contentfulPage.title;
   const { html: body } = data.contentfulPage.body.childMarkdownRemark;
 
-  return (
-    <Layout>
-     <PageWrapper className="content">
-        <h1>{title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: body }} ></div>
-     </PageWrapper>
+  return <Layout>
+      <PageWrapper className="content">
+        <Helmet title={`${data.site.siteMetadata.title} | ${title}`} />
+        <div dangerouslySetInnerHTML={{ __html: body }} />
+      </PageWrapper>
     </Layout>
-  )
 }
 
-export const query = graphql`
-    query pageQuery($slug: String!) {
-      contentfulPage(slug: { eq: $slug } ) {
-        body {
-          childMarkdownRemark {
-            html
-          }
-        }
-        title {
-          title
+export const pageQuery = graphql`
+  query pageQuery($slug: String!) {
+    contentfulPage(slug: { eq: $slug } ) {
+      body {
+        childMarkdownRemark {
+          html
         }
       }
+      title {
+        title
+      }
     }
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
 `

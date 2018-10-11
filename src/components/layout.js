@@ -35,6 +35,14 @@ injectGlobal`
   :root {
     font-size: 62.5%;
   }
+
+  h1 { font-size: 3.6rem; line-height: 1.5; }
+  h2 { font-size: 3rem; line-height: 1.5; }
+  h3 { font-size: 2.4rem; line-height: 1.5; }
+  h4 { font-size: 2.0rem; line-height: 1.5; }
+  h5 { font-size: 1.6rem; }
+  h6 { font-size: 1.4rem; }
+
   body {
     font-size: 1.6rem;
     background: #F3F4F8;
@@ -50,9 +58,12 @@ injectGlobal`
     font-size: 1.4rem
   }
   .content {
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 400;
+    }
     p {
       font-family: ${theme.main.fontSansSerif};
-      font-weight: ${ ios() ? 500 : 300 };
+      font-weight: ${ios() ? 500 : 300};
       ${media.medium`
         font-weight: 300;
       `}
@@ -101,7 +112,9 @@ class Layout extends React.Component {
             }
           }
         `} render={data => <>
-            <Helmet title={data.site.siteMetadata.title} meta={[{ name: 'description', content: 'Sample' }, { name: 'keywords', content: 'sample, something' }]} />
+            <Helmet 
+              title={`${data.site.siteMetadata.title}`} 
+              meta={[{ name: 'description', content: 'Sample' }, { name: 'keywords', content: 'sample, something' }]} />
             <HomepageWrapper>
               <ThemeProvider theme={theme}>
                 <Header siteTitle={data.site.siteMetadata.title} />

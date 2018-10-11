@@ -5,6 +5,7 @@ import { theme } from '../components/styles'
 import moment from 'moment'
 import { Link } from 'gatsby'
 import { media } from '../components/styles'
+import Helmet from 'react-helmet'
 
 const WritingWrapper = styled.div`
   width: 100%;
@@ -43,10 +44,12 @@ const WritingWrapper = styled.div`
 `
 
 const Writing = ({data}) => {
-  const { edges: posts } = data.allContentfulPost
+
+const { edges: posts } = data.allContentfulPost
 
  return <ThemeProvider theme={theme}>
      <Layout>
+     <Helmet title={`${data.site.siteMetadata.title} | Writing`} />
        <WritingWrapper className="content post">
          {posts.map(({ node: post }, i) => (
            <div key={post.id} className={`post__item`}>
@@ -62,8 +65,8 @@ const Writing = ({data}) => {
 
 export default Writing
 
-export const query = graphql`
-  query GetBlogItems {
+export const WritingQuery = graphql`
+  query WritingQuery {
     allContentfulPost {
       edges {
         node {
@@ -81,6 +84,11 @@ export const query = graphql`
             }
           }
         }
+      }
+    }
+    site {
+      siteMetadata {
+        title
       }
     }
   }

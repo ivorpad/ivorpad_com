@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import  {lighten} from 'polished';
 import truncate from 'lodash/truncate'
 import CardIcons from '../components/CardIcons'
-
+import Helmet from 'react-helmet'
 
 const Card = styled.div`
   background: white;
@@ -30,8 +30,9 @@ const Card = styled.div`
         border: none;
       }
       .card__title {
+        font-weight: bold;
         font-size: 1.8rem;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
       }
       .card__icons {
         display:flex;
@@ -49,7 +50,7 @@ const Card = styled.div`
   }
 
   .card__content p {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     color: ${props => lighten(0.1, props.theme.main.black)};
   }
   .card__tag {
@@ -74,21 +75,18 @@ export default class WorkPage extends Component {
   }
 
   render() {
-    return (
-      <ThemeProvider theme={theme}>
+    return <ThemeProvider theme={theme}>
         <Layout>
+          <Helmet title={`${this.props.data.site.siteMetadata.title} | Work`} />
           <div className="card content grid">
             {this.state.data.map(({ node: post }) => {
               return <Card key={post.id} className="card__item">
                   <div className="card__meta">
                     <Link to={`/work/${post.slug}`} state={{ isInModal: true }}>
-                      <h3 className={`card__title`}>
-                        {post.title.title}
-                      </h3>
+                      <h3 className={`card__title`}>{post.title.title}</h3>
                     </Link>
 
-                  {post.externalLink !== null && post.gitRepoUrl !== null ? <CardIcons post={post} /> : null }
-                    
+                    {post.externalLink !== null && post.gitRepoUrl !== null ? <CardIcons post={post} /> : null}
                   </div>
 
                   <div className="card__content">
@@ -109,12 +107,16 @@ export default class WorkPage extends Component {
           </div>
         </Layout>
       </ThemeProvider>
-    )
   }
 }
 
 export const query = graphql`
   query GetWorkItems {
+    site {
+      siteMetadata {
+        title
+      }
+    }
     allContentfulWork(
       sort: { fields: [updatedAt], order: DESC }
     ) {

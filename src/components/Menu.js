@@ -85,7 +85,8 @@ const Navigation = styled.nav`
     right: 0;
     line-height: 0;
     padding: 10px;
-    border: 1px solid;
+    border: 1px solid #ccc;
+    border-radius: 3px;
     margin-top: -10px;
   }
 

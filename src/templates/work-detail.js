@@ -3,6 +3,7 @@ import { PageRenderer } from 'gatsby'
 import Layout from '../components/layout'
 import styled from 'styled-components'
 import { media } from '../components/styles'
+import Helmet from 'react-helmet'
 
 const WorkWrapper = styled.div`
 ${media.medium`
@@ -22,7 +23,7 @@ import(`../components/modal`).then(modal => {
 })
 let windowWidth;
 
-export default class WorkDetail extends Component {
+class WorkDetail extends Component {
 
   render() {
     const { body, title } = this.props.data.contentfulWork;
@@ -38,6 +39,7 @@ export default class WorkDetail extends Component {
     if (isInModal && Modal) {
       return <>
         <PageRenderer location={{ pathname: `/work` }} />
+        <Helmet title={`Ivor | ${title.title}`} />
         <Modal isOpen={true} location={this.props.location}>
          <div className="content">
             <h3>{title.title}</h3>
@@ -54,5 +56,6 @@ export default class WorkDetail extends Component {
       </WorkWrapper>
     </Layout>
   }
-
 }
+
+export default WorkDetail
