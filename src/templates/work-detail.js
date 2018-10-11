@@ -42,7 +42,7 @@ class WorkDetail extends Component {
         <Helmet title={`Ivor | ${title.title}`} />
         <Modal isOpen={true} location={this.props.location}>
          <div className="content">
-            <h3>{title.title}</h3>
+            <h2>{title.title}</h2>
             <div dangerouslySetInnerHTML={{ __html: body.childMarkdownRemark.html }} />
           </div>
         </Modal>
@@ -51,7 +51,8 @@ class WorkDetail extends Component {
 
     return <Layout>
       <WorkWrapper className="content">
-        <h1>{title.title}</h1>
+        <Helmet title={`Ivor | ${title.title}`} />
+        <h2>{title.title}</h2>
         <div dangerouslySetInnerHTML={{ __html: body.childMarkdownRemark.html }} />
       </WorkWrapper>
     </Layout>
