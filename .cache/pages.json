@@ -1,0 +1,82 @@
+[
+    {
+        "componentChunkName": "component---src-pages-index-js",
+        "jsonName": "index",
+        "path": "/"
+    },
+    {
+        "componentChunkName": "component---src-pages-404-js",
+        "jsonName": "404-html-516",
+        "path": "/404.html"
+    },
+    {
+        "componentChunkName": "component---src-pages-404-js",
+        "jsonName": "404-22d",
+        "path": "/404/"
+    },
+    {
+        "componentChunkName": "component---src-templates-page-js",
+        "jsonName": "about-771",
+        "path": "/about"
+    },
+    {
+        "componentChunkName": "component---src-pages-contact-js",
+        "jsonName": "contact-26a",
+        "path": "/contact/"
+    },
+    {
+        "componentChunkName": "component---cache-dev-404-page-js",
+        "jsonName": "dev-404-page-5f9",
+        "path": "/dev-404-page/"
+    },
+    {
+        "componentChunkName": "component---src-templates-page-js",
+        "jsonName": "tools-bf1",
+        "path": "/tools"
+    },
+    {
+        "componentChunkName": "component---src-pages-work-js",
+        "jsonName": "work-fa6",
+        "path": "/work/"
+    },
+    {
+        "componentChunkName": "component---src-templates-work-js",
+        "jsonName": "work-knowledgebase-c6c",
+        "path": "/work/knowledgebase"
+    },
+    {
+        "componentChunkName": "component---src-templates-work-js",
+        "jsonName": "work-portfolio-item-one-171",
+        "path": "/work/portfolio-item-one"
+    },
+    {
+        "componentChunkName": "component---src-templates-work-js",
+        "jsonName": "work-portfolio-item-three-567",
+        "path": "/work/portfolio-item-three"
+    },
+    {
+        "componentChunkName": "component---src-templates-work-js",
+        "jsonName": "work-portfolio-item-two-559",
+        "path": "/work/portfolio-item-two"
+    },
+    {
+        "componentChunkName": "component---src-pages-writing-js",
+        "jsonName": "writing-429",
+        "path": "/writing/"
+    },
+    {
+        "componentChunkName": "component---src-templates-blog-post-js",
+        "jsonName": "writing-down-the-rabbit-hole-4d1",
+        "path": "/writing/down-the-rabbit-hole"
+    },
+    {
+        "componentChunkName": "component---src-templates-blog-post-js",
+        "jsonName": "writing-seven-tips-from-ernest-hemingway-on-how-to-write-fiction-9ad",
+        "path": "/writing/seven-tips-from-ernest-hemingway-on-how-to-write-fiction"
+    },
+    {
+        "componentChunkName": "component---src-templates-blog-post-js",
+        "jsonName": "writing-this-is-a-new-post-entry-c7e",
+        "path": "/writing/this-is-a-new-post-entry"
+    }
+]
