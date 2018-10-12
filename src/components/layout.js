@@ -8,6 +8,9 @@ import Footer from './Footer'
 import styled, { injectGlobal } from 'styled-components'
 import { theme, media } from '../components/styles'
 import { lighten } from 'polished';
+import { injectGlobalStyles } from '../styles/globalStyles'
+
+injectGlobalStyles();
 
 const HomepageWrapper = styled.div`
   height: 100vh;
