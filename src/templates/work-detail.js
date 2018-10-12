@@ -6,6 +6,7 @@ import { media } from '../components/styles'
 import Helmet from 'react-helmet'
 
 const WorkWrapper = styled.div`
+
 ${media.medium`
   width: 80%;
 `}

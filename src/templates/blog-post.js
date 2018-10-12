@@ -23,13 +23,15 @@ export default ({data}) => {
   const { title } = data.contentfulPost.title;
   const { html: body } = data.contentfulPost.body.childMarkdownRemark;
 
-  return <Layout>
-    <Helmet title={`${data.site.siteMetadata.title} | ${title}`} />
+  return (
+    <Layout>
+      <Helmet title={`${data.site.siteMetadata.title} | ${title}`} />
       <BlogPostWrapper className="content">
         <h2>{title}</h2>
         <div dangerouslySetInnerHTML={{ __html: body }} />
       </BlogPostWrapper>
     </Layout>
+  )
 }
 
 export const blogQuery = graphql `

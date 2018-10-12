@@ -108,7 +108,7 @@ const Navigation = styled.nav`
         color: ${props => props.theme.main.black};
         text-transform: uppercase;
         font-size: 1.4rem;
-
+        font-weight: 500;
         &:hover {
           color: ${props => props.theme.main.blue};
         }
@@ -221,12 +221,12 @@ class Menu extends Component {
               </li>
               <li>
                 <Link
-                  to="/gear"
-                  component="gear"
+                  to="/tools"
+                  component="tools"
                   activeClassName="active"
                   role="menuitem"
                 >
-                  Gear
+                  Tools
                   </Link>
               </li>
               <li>
