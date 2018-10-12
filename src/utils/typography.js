@@ -21,7 +21,7 @@ const typography = new Typography({
         '400',
         '700',
       ],
-    },
+    }
   ],
 })
 

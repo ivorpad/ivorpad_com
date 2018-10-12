@@ -15,6 +15,7 @@ export const theme = {
     grey: '#828282',
     fontSerif: "'Merriweather', serif",
     fontSansSerif: "'Montserrat', sans-serif",
+    fontSerifCode: "'Fira Mono', monospace"
   },
 }
 

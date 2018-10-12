@@ -29,18 +29,15 @@ export const injectGlobalStyles = () => {
     font-size: 62.5%;
   }
 
-  h1 { font-size: 3.6rem; line-height: 1.5; }
-  h2 { font-size: 30rem; line-height: 1.5; }
-  h3 { font-size: 2.4rem; line-height: 1.5; }
-  h4 { font-size: 2.0rem; line-height: 1.5; }
-  h5 { font-size: 1.6rem; }
-  h6 { font-size: 1.4rem; }
-
   body {
     font-size: 1.6rem;
     background: #F3F4F8;
     color: ${theme.main.black};
     line-height: 1.8;
+  }
+
+  p, li, blockquote, a, span, mark {
+    font-family: ${theme.main.fontSansSerif};
   }
   
   a {
@@ -48,21 +45,38 @@ export const injectGlobalStyles = () => {
     text-decoration: none;
     transition: all .15s linear, border .15s ease-in-out;
   }
+  .gatsby-highlight code {
+    font-size: 1.4rem;
+    font-family: ${theme.main.fontSerifCode};
+  }
   code {
-    font-size: 1.4rem
+    font-size: 1.6rem;
+    color: ${theme.main.black};
+    background-color: rgba(27,31,35,0.05);
+    border-radius: 3px;
+    padding: 1px 5px;
+    font-family: ${theme.main.fontSerifCode};
+    font-size: 85%;
+
+  }
+  p, li, a, blockquote  {
+    font-weight: ${ios() ? 500 : 300};
+    ${media.medium`
+      font-weight: 300;
+    `}
+    line-height: 1.8;
   }
   .content {
     h1, h2, h3, h4, h5, h6 {
       font-weight: 400;
+      line-height: 1.5;
     }
-    p {
-      font-family: ${theme.main.fontSansSerif};
-      font-weight: ${ios() ? 500 : 300};
-      ${media.medium`
-        font-weight: 300;
-      `}
-      line-height: 1.8;
-    }
+    h1 { font-size: 3.6rem;  }
+    h2 { font-size: 3rem; }
+    h3 { font-size: 2.4rem; }
+    h4 { font-size: 2.0rem; }
+    h5 { font-size: 1.6rem; }
+    h6 { font-size: 1.4rem; }
     a {
       border-bottom: 2px solid ${lighten(0.3, theme.main.blue)};
       &:hover {
