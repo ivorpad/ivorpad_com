@@ -11,8 +11,14 @@ const WritingWrapper = styled.div`
   width: 100%;
   margin: 0 auto;
   ${media.medium`
+    width: 80%;
+  `} 
+
+  ${media.large`
     width: 60%;
-  `} .post__item {
+  `} 
+  
+  .post__item {
     margin-bottom: 3rem;
     background: white;
     border-radius: 5px;
