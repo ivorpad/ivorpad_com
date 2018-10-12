@@ -36,7 +36,7 @@ export const injectGlobalStyles = () => {
     line-height: 1.8;
   }
 
-  p, li, blockquote, a, span, mark {
+  p, li, blockquote, a, span, mark, label {
     font-family: ${theme.main.fontSansSerif};
   }
   

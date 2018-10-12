@@ -1,0 +1,11 @@
+#!/bin/sh
+
+echo "Switching to branch master"
+git checkout master
+
+echo "Building app"
+gatsby build
+
+echo "Deploying files to server"
+rsync -avP public/ root@173.230.140.58:/srv/users/serverpilot/apps/ivorpad/public/
+echo "Deployment complete"
