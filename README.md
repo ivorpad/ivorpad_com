@@ -17,6 +17,8 @@ Install the dependencies:
 yarn install
 ```
 
+This website is using [Contentful](https://contentful.com), you need to set both `CONTENTFUL_ACCESS_TOKEN` and `CONTENTFUL_SPACE_ID` environment variables in `.env.development` and `.env.production`
+
 Then you can run it by:
 ```sh
 cd your_repo_folder
