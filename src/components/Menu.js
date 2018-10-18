@@ -232,6 +232,7 @@ class Menu extends Component {
               <li>
                 <Link
                   to="/contact"
+                  getProps={isActive}
                   component="contact"
                   activeClassName="active"
                   role="menuitem"

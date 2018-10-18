@@ -7,8 +7,8 @@ import Helmet from 'react-helmet'
 
 const WorkWrapper = styled.div`
 
-${media.medium`
-  width: 80%;
+${media.large`
+  width: 60%;
 `}
   width: 100%;
   margin: 0 auto;

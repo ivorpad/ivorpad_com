@@ -30,6 +30,18 @@ export const media = Object.keys(sizes).reduce((acc, label) => {
   return acc
 }, {});
 
+export const PageWrapper = styled.div`
+  width: 100%;
+  ${media.large`
+    width: 60%;
+  `} 
+  
+  margin: 0 auto;
+  background: white;
+  border-radius: 5px;
+  padding: 3rem;
+  box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.1);
+`
 
 export const Container = styled.div`
   width: 90%;

@@ -5,6 +5,8 @@ import { media } from '../components/styles'
 import styled from 'styled-components'
 import {lighten} from 'polished'
 // import Helmet from 'react-helmet'
+import { PageWrapper } from '../components/styles'
+import spinner from '../utils/spinner.svg';
 
 const Message = styled.div`
   width: 50%;
@@ -14,14 +16,17 @@ const Message = styled.div`
   border-radius: 3px;
   font-weight: 300;
   background: ${ props => props.success ? lighten(0.7, 'green') : lighten(0.4, 'red')};
-  border: 1px solid ${ props => props.success ? lighten(0.7, 'green') : lighten(0.3, 'red')};
+  border: 1px solid ${ props => props.success ? lighten(0.3, 'green') : lighten(0.3, 'red')};
 `
 
 const Form = styled.form`
   margin-top: 4rem;
   fieldset {
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
+    &:disabled {
+      opacity: .5;
+    }
     border: none;
   }
 
@@ -32,7 +37,7 @@ const Form = styled.form`
     background: #f1f1f1;
     border-radius: 3px;
     padding: 5px;
-    width: 50%;
+    width: 100%;
     margin-bottom: 2rem;
     font-family: ${props => props.theme.main.fontSansSerif};
     font-size: 1.4rem;
@@ -45,34 +50,30 @@ const Form = styled.form`
     font-size: 1.2rem;
     text-transform: uppercase;
   }
-
-  button {
-    color: ${props => props.theme.main.blue};
-    font-family: ${props => props.theme.main.fontSansSerif};
-    border: 1px solid ${props => props.theme.main.blue};
-    padding: 0.5rem 1.5rem;
-    cursor: pointer;
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    border-radius: 3px;
-    transition: background 0.15s ease-in-out, color 0.15s ease-in-out;
-    &:hover {
-      background: ${props => props.theme.main.blue};
-      color: white;
-    }
-  }
 `
 
-const PageWrapper = styled.div`
-  width: 100%;
-
-  ${media.medium`
-    width: 60%;
-  `} margin: 0 auto;
-  background: white;
-  border-radius: 5px;
-  padding: 3rem;
-  box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.1);
+const Button = styled.button`
+  color: ${props => props.theme.main.blue};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: ${props => props.theme.main.fontSansSerif};
+  border: 1px solid ${props => props.theme.main.blue};
+  padding: ${props => (props.loading ? '0.65rem 5.3rem' : '0.5rem 1.5rem')};
+  cursor: pointer;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  border-radius: 3px;
+  background: ${props => (props.loading ? props.theme.main.blue : '')};
+  transition: background 0.15s ease-in-out, color 0.15s ease-in-out;
+  img {
+    margin: 0;
+  }
+  &:hover {
+    background: ${props => props.theme.main.blue};
+    color: white;
+  }
 `
 
 class Contact extends Component {
@@ -81,7 +82,8 @@ class Contact extends Component {
     email: '',
     message: '',
     success: false,
-    error: false
+    error: false,
+    isLoading: false
   }
 
   handleForm = e => {
@@ -100,6 +102,8 @@ class Contact extends Component {
       message
     }
 
+    
+    this.setState({ isLoading: true });
     fetch(`https://cn3wplbdy7.execute-api.us-west-2.amazonaws.com/dev/static-site-mailer`,
       {
         method: 'post',
@@ -110,8 +114,10 @@ class Contact extends Component {
         },
       }
     )
-      .then(r => r.json())
-      .then(r => this.setState({ name: '', email: '', message: '', success: true, error: false}))
+      .then(r => {
+        return r.json();
+      })
+      .then(r => this.setState({ name: '', email: '', message: '', success: true, error: false, isLoading: false}))
       .catch(e => this.setState({ error: true }) )
 
     console.log(JSON.stringify(formData))
@@ -124,6 +130,7 @@ class Contact extends Component {
   }
 
   render() {
+    
     return <Layout>
         <PageWrapper className="content">
           <h2>Get in touch</h2>
@@ -133,11 +140,13 @@ class Contact extends Component {
           </p>
 
           <Form onSubmit={e => this.handleForm(e)}>
-            <fieldset>
+            <fieldset disabled={this.state.isLoading}>
               <input type="text" placeholder="Name" value={this.state.name} name="name" onChange={e => this.handleInput(e)} required />
               <input type="email" name="email" value={this.state.email} placeholder="Email" onChange={e => this.handleInput(e)} required />
               <textarea name="message" value={this.state.message} placeholder="Message" rows="5" onChange={e => this.handleInput(e)} required />
-              <button type="submit">Send Message</button>
+              <Button type="submit" loading={this.state.isLoading}>
+                {!this.state.isLoading ? 'Send Message' : <img src={spinner} alt="" /> }
+              </Button>
             </fieldset>
           </Form>
 

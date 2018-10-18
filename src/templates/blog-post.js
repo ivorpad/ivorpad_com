@@ -8,7 +8,7 @@ import Helmet from 'react-helmet'
 const BlogPostWrapper = styled.div`
   width: 100%;
 
-  ${media.medium`
+  ${media.large`
     width: 60%;
   `}
 
