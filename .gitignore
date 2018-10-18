@@ -10,3 +10,4 @@ public
 .env.production
 .env.development
 .env
+deploy
