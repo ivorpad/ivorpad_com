@@ -1,23 +1,25 @@
-# gatsby-starter-default
-The default Gatsby starter.
-
-For an overview of the project structure please refer to the [Gatsby documentation - Building with Components](https://www.gatsbyjs.org/docs/building-with-components/).
+# ivorpad.com
 
 ## Install
+
+First clone the repository:
+```sh
+git clone https://github.com/ivorpad/ivorpad_com.git your_repo_folder
+```
 
 Make sure that you have the Gatsby CLI program installed:
 ```sh
 npm install --global gatsby-cli
 ```
 
-And run from your CLI:
+Install the dependencies:
 ```sh
-gatsby new gatsby-example-site
+yarn install
 ```
 
 Then you can run it by:
 ```sh
-cd gatsby-example-site
+cd your_repo_folder
 gatsby develop
 ```
 
