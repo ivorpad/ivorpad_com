@@ -5,6 +5,7 @@ jspm_packages
 # Serverless directories
 .serverless
 public
+.cache
 .env.production
 .env.development
 .env
