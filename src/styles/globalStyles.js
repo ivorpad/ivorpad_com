@@ -45,7 +45,7 @@ export const injectGlobalStyles = () => {
     text-decoration: none;
     transition: all .15s linear, border .15s ease-in-out;
   }
-  .gatsby-highlight code {
+  .gatsby-highlight pre code span, gatsby-highlight code {
     font-size: 1.4rem;
     font-family: ${theme.main.fontSerifCode};
   }
