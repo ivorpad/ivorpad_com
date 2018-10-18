@@ -6,6 +6,17 @@ import styled from 'styled-components'
 import {lighten} from 'polished'
 // import Helmet from 'react-helmet'
 
+const Success = styled.div`
+  background: ${lighten(0.7, 'green')};
+  border: 1px solid ${lighten(0.6, 'green')};
+  width: 50%;
+  padding: 1.2rem;
+  font-family: ${props => props.theme.main.fontSansSerif};
+  font-size: 1.4rem;
+  border-radius: 3px;
+  font-weight: 300;
+`
+
 const Form = styled.form`
   margin-top: 4rem;
   fieldset {
@@ -69,6 +80,7 @@ class Contact extends Component {
     name: '',
     email: '',
     message: '',
+    success: false
   }
 
   handleForm = e => {
@@ -87,8 +99,6 @@ class Contact extends Component {
       message
     }
 
-    console.log(message)
-
     fetch(`https://cn3wplbdy7.execute-api.us-west-2.amazonaws.com/dev/static-site-mailer`,
       {
         method: 'post',
@@ -100,7 +110,7 @@ class Contact extends Component {
       }
     )
       .then(r => r.json())
-      .then(r => console.log(r))
+      .then(r => this.setState({ name: '', email: '', message: '', success: true}))
       .catch(e => console.log(e.message))
 
     console.log(JSON.stringify(formData))
@@ -123,12 +133,16 @@ class Contact extends Component {
 
           <Form onSubmit={e => this.handleForm(e)}>
             <fieldset>
-              <input type="text" placeholder="Name" name="name" onChange={e => this.handleInput(e)} required />
-              <input type="email" name="email" placeholder="Email" onChange={e => this.handleInput(e)} required />
-              <textarea name="message" placeholder="Message" rows="5" onChange={e => this.handleInput(e)} required />
+              <input type="text" placeholder="Name" value={this.state.name} name="name" onChange={e => this.handleInput(e)} required />
+              <input type="email" name="email" value={this.state.email} placeholder="Email" onChange={e => this.handleInput(e)} required />
+              <textarea name="message" value={this.state.message} placeholder="Message" rows="5" onChange={e => this.handleInput(e)} required />
               <button type="submit">Send Message</button>
             </fieldset>
           </Form>
+
+        {this.state.success ? <Success>
+          Your message has been submitted successfully, I'll do my best to reply as soon as possible.
+          </Success> : null }
         </PageWrapper>
       </Layout>
   }
