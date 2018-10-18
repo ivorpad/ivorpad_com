@@ -1,9 +1,10 @@
-# Project dependencies
-.cache
+# package directories
 node_modules
-yarn-error.log
+jspm_packages
 
-# Build directory
-/public
-.DS_Store
-deploy
+# Serverless directories
+.serverless
+public
+.env.production
+.env.development
+.env

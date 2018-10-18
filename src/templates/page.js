@@ -20,7 +20,8 @@ const PageWrapper = styled.div`
   box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.1);
 `
 
-export default ({ data }) => {
+export default ({ data, location }) => {
+
   const { title } = data.contentfulPage.title;
   const { html: body } = data.contentfulPage.body.childMarkdownRemark;
 
