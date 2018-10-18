@@ -6,7 +6,7 @@ const SES = new AWS.SES();
 function sendEmail(formData, callback) {
   const emailParams = {
     Source: 'me@ivorpad.com', // SES SENDING EMAIL
-    ReplyToAddresses: [formData.reply_to],
+    ReplyToAddresses: [formData.email],
     Destination: {
       ToAddresses: ['me@ivorpad.com'], // SES RECEIVING EMAIL
     },
@@ -15,13 +15,13 @@ function sendEmail(formData, callback) {
         Text: {
           Charset: 'UTF-8',
           Data: `${formData.message}\n\nName: ${formData.name}\nEmail: ${
-            formData.reply_to
+            formData.email
           }`,
         },
       },
       Subject: {
         Charset: 'UTF-8',
-        Data: 'New message from your_site.com',
+        Data: '[ivorpad.com] New Message',
       },
     },
   }
@@ -37,7 +37,7 @@ module.exports.staticSiteMailer = (event, context, callback) => {
       statusCode: err ? 500 : 200,
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'http://localhost:8000',
+        'Access-Control-Allow-Origin': 'https://ivorpad.com',
       },
       body: JSON.stringify({
         message: err ? err.message : data,

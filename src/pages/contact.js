@@ -118,7 +118,7 @@ class Contact extends Component {
         return r.json();
       })
       .then(r => this.setState({ name: '', email: '', message: '', success: true, error: false, isLoading: false}))
-      .catch(e => this.setState({ error: true }) )
+      .catch(e => this.setState({ error: true, isLoading: false }) )
 
     console.log(JSON.stringify(formData))
   }
