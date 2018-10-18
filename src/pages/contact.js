@@ -6,15 +6,15 @@ import styled from 'styled-components'
 import {lighten} from 'polished'
 // import Helmet from 'react-helmet'
 
-const Success = styled.div`
-  background: ${lighten(0.7, 'green')};
-  border: 1px solid ${lighten(0.6, 'green')};
+const Message = styled.div`
   width: 50%;
   padding: 1.2rem;
   font-family: ${props => props.theme.main.fontSansSerif};
   font-size: 1.4rem;
   border-radius: 3px;
   font-weight: 300;
+  background: ${ props => props.success ? lighten(0.7, 'green') : lighten(0.4, 'red')};
+  border: 1px solid ${ props => props.success ? lighten(0.7, 'green') : lighten(0.3, 'red')};
 `
 
 const Form = styled.form`
@@ -80,7 +80,8 @@ class Contact extends Component {
     name: '',
     email: '',
     message: '',
-    success: false
+    success: false,
+    error: false
   }
 
   handleForm = e => {
@@ -110,8 +111,8 @@ class Contact extends Component {
       }
     )
       .then(r => r.json())
-      .then(r => this.setState({ name: '', email: '', message: '', success: true}))
-      .catch(e => console.log(e.message))
+      .then(r => this.setState({ name: '', email: '', message: '', success: true, error: false}))
+      .catch(e => this.setState({ error: true }) )
 
     console.log(JSON.stringify(formData))
   }
@@ -140,9 +141,14 @@ class Contact extends Component {
             </fieldset>
           </Form>
 
-        {this.state.success ? <Success>
+        {this.state.success ? <Message success>
           Your message has been submitted successfully, I'll do my best to reply as soon as possible.
-          </Success> : null }
+          </Message > : null }
+
+        {this.state.error ? <Message>
+          There's been an error please try again.
+          </Message> : null}
+
         </PageWrapper>
       </Layout>
   }
