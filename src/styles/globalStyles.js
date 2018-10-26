@@ -45,12 +45,12 @@ export const injectGlobalStyles = () => {
     text-decoration: none;
     transition: all .15s linear, border .15s ease-in-out;
   }
-  .gatsby-highlight pre code span, gatsby-highlight code {
+  .gatsby-highlight pre code span, .gatsby-highlight pre code {
     font-size: 1.4rem;
     font-family: ${theme.main.fontSerifCode};
   }
   code {
-    font-size: 1.6rem;
+    /* font-size: 1.6rem; */
     color: ${theme.main.black};
     background-color: rgba(27,31,35,0.05);
     border-radius: 3px;
