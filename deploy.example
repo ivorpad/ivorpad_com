@@ -1,0 +1,11 @@
+#!/bin/sh
+
+echo "Switching to branch master"
+git checkout master
+
+echo "Building app"
+gatsby build
+
+echo "Deploying files to server"
+rsync -avP public/ root@<linode_ip>:/srv/users/serverpilot/apps/<user_dir>/public/
+echo "Deployment complete"
