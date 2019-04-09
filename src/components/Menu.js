@@ -186,7 +186,7 @@ class Menu extends Component {
                   Home
                   </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   to="/work"
                   getProps={isActive}
@@ -207,7 +207,7 @@ class Menu extends Component {
                 >
                   Writing
                   </Link>
-              </li>
+              </li> */}
               <li>
                 <Link
                   to="/about"

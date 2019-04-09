@@ -1,6 +1,6 @@
 {
-  "name": "static-site-mailer",
-  "description": "Gatsby default starter",
+  "name": "ivorpad.com",
+  "description": "Ivor's personal website",
   "version": "1.0.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
