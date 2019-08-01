@@ -29,7 +29,9 @@ const Footer = () => {
         </div>
         <div className="footer__right">
           <p>
-            Built with <a href="https://gatsbyjs.org">GatsbyJS</a>
+            Built with <a href="https://gatsbyjs.org">GatsbyJS</a> and <a href="https://www.contentful.com/">
+              Contentful
+            </a>
           </p>
         </div>
       </FooterWrapper>

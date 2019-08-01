@@ -33,7 +33,7 @@ export const media = Object.keys(sizes).reduce((acc, label) => {
 export const PageWrapper = styled.div`
   width: 100%;
   ${media.large`
-    width: 60%;
+    width: 80%;
   `} 
   
   margin: 0 auto;
