@@ -4,27 +4,8 @@ const SES = new AWS.SES();
 
 
 function sendEmail(formData, callback) {
-  const emailParams = {
-    Source: 'me@ivorpad.com', // SES SENDING EMAIL
-    ReplyToAddresses: [formData.email],
-    Destination: {
-      ToAddresses: ['me@ivorpad.com'], // SES RECEIVING EMAIL
-    },
-    Message: {
-      Body: {
-        Text: {
-          Charset: 'UTF-8',
-          Data: `${formData.message}\n\nName: ${formData.name}\nEmail: ${
-            formData.email
-          }`,
-        },
-      },
-      Subject: {
-        Charset: 'UTF-8',
-        Data: '[ivorpad.com] New Message',
-      },
-    },
-  }
+  const emailParams = { Source: 'ivor.padilla@gmail.com', ReplyToAddresses: [formData.email], Destination: { ToAddresses: ['ivor.padilla@gmail.com'] }, Message: { Body: { Text: { Charset: 'UTF-8', Data: `${formData.message // SES SENDING EMAIL // SES RECEIVING EMAIL
+          }\n\nName: ${formData.name}\nEmail: ${formData.email}` } }, Subject: { Charset: 'UTF-8', Data: '[ivorpad.com] New Message' } } }
 
   SES.sendEmail(emailParams, callback)
 }

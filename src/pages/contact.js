@@ -135,8 +135,10 @@ class Contact extends Component {
         <PageWrapper className="content">
           <h2>Get in touch</h2>
 
-          <p>I'm currently open for any inquiry based on my current expertise. Whether is an app, a big project, a website or something fun I'm down for it. You can reach me at <a href="mailto:me@ivorpad.com?subject=Hey, Ivor">
-              me@ivorpad.com</a> or drop me a line in the contact form below:
+          <p>
+            I'm currently open for any inquiry based on my current expertise. Whether is an app, a big project, a website or something fun I'm down for it. You can reach me at <a href="mailto:ivor.padilla@gmail.com?subject=Hey, Ivor">
+              ivor.padilla[at]gmail.com
+            </a> or drop me a line in the contact form below:
           </p>
 
           <Form onSubmit={e => this.handleForm(e)}>
@@ -145,19 +147,19 @@ class Contact extends Component {
               <input type="email" name="email" value={this.state.email} placeholder="Email" onChange={e => this.handleInput(e)} required />
               <textarea name="message" value={this.state.message} placeholder="Message" rows="5" onChange={e => this.handleInput(e)} required />
               <Button type="submit" loading={this.state.isLoading}>
-                {!this.state.isLoading ? 'Send Message' : <img src={spinner} alt="" /> }
+                {!this.state.isLoading ? 'Send Message' : <img src={spinner} alt="" />}
               </Button>
             </fieldset>
           </Form>
 
-        {this.state.success ? <Message success>
-          Your message has been submitted successfully, I'll do my best to reply as soon as possible.
-          </Message > : null }
+          {this.state.success ? <Message success>
+              Your message has been submitted successfully, I'll do my best
+              to reply as soon as possible.
+            </Message> : null}
 
-        {this.state.error ? <Message>
-          There's been an error please try again.
-          </Message> : null}
-
+          {this.state.error ? <Message>
+              There's been an error please try again.
+            </Message> : null}
         </PageWrapper>
       </Layout>
   }
