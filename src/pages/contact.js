@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import Layout from '../components/layout'
-// import { graphql } from 'gatsby'
-import { media } from '../components/styles'
+import Helmet from 'react-helmet'
 import styled from 'styled-components'
 import {lighten} from 'polished'
-// import Helmet from 'react-helmet'
 import { PageWrapper } from '../components/styles'
 import spinner from '../utils/spinner.svg';
 
@@ -119,8 +117,6 @@ class Contact extends Component {
       })
       .then(r => this.setState({ name: '', email: '', message: '', success: true, error: false, isLoading: false}))
       .catch(e => this.setState({ error: true, isLoading: false }) )
-
-    console.log(JSON.stringify(formData))
   }
 
   handleInput = (e) => {
@@ -133,6 +129,7 @@ class Contact extends Component {
     
     return <Layout>
         <PageWrapper className="content">
+          <Helmet title="Ivor Padilla | Contact" />
           <h2>Get in touch</h2>
 
           <p>

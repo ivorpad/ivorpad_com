@@ -1,8 +1,6 @@
 import React from 'react';
 import Layout from '../components/layout'
 import { graphql } from 'gatsby'
-import { media } from '../components/styles'
-import styled from 'styled-components'
 import Helmet from 'react-helmet'
 import { PageWrapper } from '../components/styles';
 
@@ -10,6 +8,8 @@ export default ({ data, location }) => {
 
   const { title } = data.contentfulPage.title;
   const { html: body } = data.contentfulPage.body.childMarkdownRemark;
+
+
 
   return <Layout>
       <PageWrapper className="content">

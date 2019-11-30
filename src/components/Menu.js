@@ -8,16 +8,12 @@ import { Link } from 'gatsby'
 import { lighten } from 'polished';
 library.add(faBars);
 
-const Logo = styled.h1`
-  color: #3d3d3d;
-  font-size: 1.8rem;
-  margin: 0;
-  align-self: flex-start;
-`
-
 const LogoLink = styled(Link)`
   color: #3d3d3d;
+  font-size: 1.8rem;
   font-weight: bold;
+  margin: 0;
+  align-self: flex-start;
   font-family: Merriweather, serif;
   text-decoration: none;
 
@@ -164,9 +160,7 @@ class Menu extends Component {
     return (
       <Fragment>
         <NavBar>
-          <Logo className="navbar__brand">
             <LogoLink to="/" aria-label="Logo of ivorpad.com">{this.props.siteTitle}</LogoLink>
-          </Logo>
           <Navigation className="navbar__navigation" role="navigation">
             <a
               role="button"
