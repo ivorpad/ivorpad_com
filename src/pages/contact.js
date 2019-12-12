@@ -81,6 +81,7 @@ class Contact extends Component {
     email: '',
     message: '',
     success: false,
+    submitted: false,
     isLoading: false
   }
 
@@ -122,11 +123,12 @@ class Contact extends Component {
             email: '',
             message: '',
             success: true,
+            submitted: true,
             isLoading: false,
           })
        }
       )
-      .catch(e => this.setState({ success: false, isLoading: false }))
+      .catch(e => this.setState({ success: false, submitted: true, isLoading: false }))
   }
 
   handleInput = (e) => {
@@ -165,16 +167,12 @@ class Contact extends Component {
             </fieldset>
           </Form>
 
-          {this.state.success ? 
-            <Message success>
-              Your message has been submitted successfully, I'll do my best
-              to reply as soon as possible.
-            </Message> :
-            <Message>
-              There's been an error please try again.
-            </Message>
-            }
-
+          {this.state.submitted && (this.state.success ? <Message success>
+                Your message has been submitted successfully, I'll do my
+                best to reply as soon as possible.
+              </Message> : <Message>
+                There's been an error please try again.
+              </Message>)}
         </PageWrapper>
       </Layout>
   }
