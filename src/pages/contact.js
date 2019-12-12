@@ -76,6 +76,12 @@ const Button = styled.button`
 `
 
 class Contact extends Component {
+
+  constructor(props) {
+    super(props);
+    this.checkboxRef = React.createRef()
+  }
+
   state = {
     name: '',
     email: '',
@@ -93,6 +99,13 @@ class Contact extends Component {
       email,
       message
     } = this.state;
+
+    const checkbox = this.checkboxRef.current;
+
+    if(checkbox.value !== "0" || checkbox.checked !== false) {
+      this.setState({ success: false, submitted: true, isLoading: false })
+      return;
+    }
 
 
     const formData = {
@@ -160,6 +173,7 @@ class Contact extends Component {
             <fieldset disabled={this.state.isLoading}>
               <input type="text" placeholder="Name" value={this.state.name} name="name" onChange={e => this.handleInput(e)} required />
               <input type="email" name="email" value={this.state.email} placeholder="Email" onChange={e => this.handleInput(e)} required />
+              <input ref={this.checkboxRef} type="checkbox" name="lk43n64lk54n37_oh_honey" value="0" style={{ display: 'none' }} tabIndex="-1" autoComplete="off" />
               <textarea name="message" value={this.state.message} placeholder="Message" rows="5" onChange={e => this.handleInput(e)} required />
               <Button type="submit" loading={this.state.isLoading}>
                 {!this.state.isLoading ? 'Send Message' : <img src={spinner} alt="" />}
