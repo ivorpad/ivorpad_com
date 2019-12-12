@@ -2,6 +2,10 @@ const _ = require(`lodash`);
 const Promise = require(`bluebird`);
 const path = require(`path`);
 const slash = require(`slash`);
+const fs = require('fs');  
+const zlib = require('zlib');   
+const glob = require('glob'); 
+const iltorb = require('iltorb')
 
 exports.onCreateWebpackConfig = ({ stage, actions }) => {
   actions.setWebpackConfig({
@@ -112,3 +116,24 @@ exports.createPages = ({ graphql, actions }) => {
     });
   })
 }
+
+
+exports.onPostBuild = () =>
+  new Promise((resolve, reject) => {
+    try {
+      const publicPath = path.join(__dirname, 'public')
+      const gzippable = glob.sync(`${publicPath}/**/?(*.html|*.js|*.css|*.svg)`)
+      gzippable.forEach(file => {
+        const content = fs.readFileSync(file)
+        const zipped = zlib.gzipSync(content)
+        fs.writeFileSync(`${file}.gz`, zipped)
+
+        const brotlied = iltorb.compressSync(content)
+        fs.writeFileSync(`${file}.br`, brotlied)
+      })
+    } catch (e) {
+      reject(new Error('onPostBuild: Could not compress the files'))
+    }
+
+    resolve()
+  })

@@ -13,8 +13,9 @@ const Message = styled.div`
   font-size: 1.4rem;
   border-radius: 3px;
   font-weight: 300;
-  background: ${ props => props.success ? lighten(0.7, 'green') : lighten(0.4, 'red')};
-  border: 1px solid ${ props => props.success ? lighten(0.3, 'green') : lighten(0.3, 'red')};
+  color: ${ props => props.success ? 'hsl(150, 62%, 20%)' : '#6d1e1e'};
+  background: ${ props => props.success ? 'hsl(150, 62%, 92%)' : lighten(0.4, 'red')};
+  border: 1px solid ${ props => props.success ? 'hsl(150, 62%, 80%)' : lighten(0.3, 'red')};
 `
 
 const Form = styled.form`
@@ -80,7 +81,6 @@ class Contact extends Component {
     email: '',
     message: '',
     success: false,
-    error: false,
     isLoading: false
   }
 
@@ -99,10 +99,10 @@ class Contact extends Component {
       email,
       message
     }
-
     
     this.setState({ isLoading: true });
-    fetch(`https://cn3wplbdy7.execute-api.us-west-2.amazonaws.com/dev/static-site-mailer`,
+    fetch(
+      `https://gia5jq7k12.execute-api.us-west-2.amazonaws.com/production/static-site-mailer`,
       {
         method: 'post',
         body: JSON.stringify(formData),
@@ -113,10 +113,20 @@ class Contact extends Component {
       }
     )
       .then(r => {
-        return r.json();
+        return r.json()
       })
-      .then(r => this.setState({ name: '', email: '', message: '', success: true, error: false, isLoading: false}))
-      .catch(e => this.setState({ error: true, isLoading: false }) )
+      .then(r =>
+       {
+          this.setState({
+            name: '',
+            email: '',
+            message: '',
+            success: true,
+            isLoading: false,
+          })
+       }
+      )
+      .catch(e => this.setState({ success: false, isLoading: false }))
   }
 
   handleInput = (e) => {
@@ -126,10 +136,16 @@ class Contact extends Component {
   }
 
   render() {
+
+    const meta = [
+      { name: 'robots', content: 'noindex'}
+    ]
     
     return <Layout>
         <PageWrapper className="content">
+          <Helmet meta={meta} />
           <Helmet title="Ivor Padilla | Contact" />
+
           <h2>Get in touch</h2>
 
           <p>
@@ -149,14 +165,16 @@ class Contact extends Component {
             </fieldset>
           </Form>
 
-          {this.state.success ? <Message success>
+          {this.state.success ? 
+            <Message success>
               Your message has been submitted successfully, I'll do my best
               to reply as soon as possible.
-            </Message> : null}
-
-          {this.state.error ? <Message>
+            </Message> :
+            <Message>
               There's been an error please try again.
-            </Message> : null}
+            </Message>
+            }
+
         </PageWrapper>
       </Layout>
   }

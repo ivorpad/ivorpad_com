@@ -48,12 +48,12 @@ class Layout extends React.Component {
         render={data => (
           <>
             <Helmet
-              title={`${data.site.siteMetadata.title}`}
+              title={`${data.site.siteMetadata.title} | Full Stack Web Developer & Designer`}
               meta={[
                 {
                   name: 'description',
                   content:
-                    "I'm a passionate Front- End Web Developer who enjoys working with JavaScript. I also like to design and build beautiful and minimalistic interfaces.",
+                    "I'm a passionate Full Stack Web Developer who enjoys working with JavaScript. I also like to design and build beautiful and minimalistic interfaces.",
                 },
                 {
                   name: 'keywords',

@@ -1,3 +1,5 @@
+org: ivorpad
+app: myapp
 # Welcome to Serverless!
 #
 # This file is the main config file for your service.
@@ -16,6 +18,7 @@ service: static-site-mailer # NOTE: update this with your service name
 provider:
   name: aws
   runtime: nodejs8.10
+  region: us-west-2
   iamRoleStatements:
     - Effect: "Allow"
       Action:
