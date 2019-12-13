@@ -17,7 +17,7 @@ service: static-site-mailer # NOTE: update this with your service name
 
 provider:
   name: aws
-  runtime: nodejs8.10
+  runtime: nodejs10.x
   region: us-west-2
   iamRoleStatements:
     - Effect: "Allow"
