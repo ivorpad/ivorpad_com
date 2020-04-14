@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import  {lighten} from 'polished';
 import truncate from 'lodash/truncate'
 import CardIcons from '../components/CardIcons'
-import Helmet from 'react-helmet'
+import {Helmet} from 'react-helmet'
 
 const Card = styled.div`
   background: white;
@@ -137,17 +137,17 @@ export const query = graphql`
               html
             }
           }
-          mainImage {
-            title
-            resize(width: 300) {
-              width
-              height
-              src
-            }
-            file {
-              url
-            }
-          }
+          # mainImage {
+          #   title
+          #   resize(width: 300) {
+          #     width
+          #     height
+          #     src
+          #   }
+          #   file {
+          #     url
+          #   }
+          # }
         }
       }
     }

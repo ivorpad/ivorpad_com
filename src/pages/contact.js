@@ -1,22 +1,24 @@
   import React, { Component } from 'react';
   import Layout from '../components/layout'
-  import Helmet from 'react-helmet'
+  import {Helmet} from 'react-helmet'
   import styled from 'styled-components'
   import {lighten} from 'polished'
-  import { PageWrapper } from '../components/styles'
+  import { PageWrapper, media } from '../components/styles'
   import spinner from '../utils/spinner.svg';
 
   const Message = styled.div`
-    width: 50%;
+    width: 100%;
+    ${media.medium`
+      width: 50%;
+    `}
     padding: 1.2rem;
     font-family: ${props => props.theme.main.fontSansSerif};
     font-size: 1.4rem;
     border-radius: 3px;
     font-weight: 300;
-    color: ${ props => props.success ? 'hsl(150, 62%, 20%)' : '#6d1e1e'};
-    background: ${ props => props.success ? 'hsl(150, 62%, 92%)' : lighten(0.4, 'red')};
-    border: 1px solid ${ props => props.success ? 'hsl(150, 62%, 80%)' : lighten(0.3, 'red')};
-  `
+    color: ${props => (props.success ? 'hsl(150, 62%, 20%)' : '#6d1e1e')};
+    background: ${props => (props.success ? 'hsl(150, 62%, 92%)' : lighten(0.4, 'red'))};
+    border: 1px solid ${props => (props.success ? 'hsl(150, 62%, 80%)' : lighten(0.3, 'red'))};`
 
   const Form = styled.form`
     margin-top: 4rem;
@@ -113,7 +115,7 @@
         },
       })
         .then(r => r.json())
-        .then(({ geo: { city, region, country } }) => {
+        .then(({ geo: { city, region, country_name } }) => {
           this.setState({
             navigator: {
               userAgent: user_agent,
@@ -122,7 +124,7 @@
               ip: ip_addr,
               city,
               region,
-              country,
+              country: country_name,
             },
           })
         })
@@ -191,14 +193,16 @@
 
     render() {
       const meta = [
-        { name: 'robots', content: 'noindex'}
+        { name: 'robots', content: 'noindex'},
+        {
+          name: 'viewport',
+          content: 'width=device-width,user-scalable=no'
+        }
       ]
       
       return <Layout>
           <PageWrapper className="content">
-            <Helmet meta={meta} />
-            <Helmet title="Ivor Padilla | Contact" />
-
+            <Helmet meta={meta} title="Ivor Padilla | Contact" />
             <h2>Get in touch</h2>
 
             <p>
@@ -219,7 +223,9 @@
               </fieldset>
             </Form>
 
-            {this.state.submitted && (this.state.success ? <Message success>
+            {this.state.submitted && (this.state.success ? <Message
+                  success
+                >
                   Your message has been submitted successfully, I'll do my
                   best to reply as soon as possible.
                 </Message> : <Message>

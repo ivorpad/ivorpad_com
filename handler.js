@@ -3,9 +3,16 @@ const AWS = require('aws-sdk')
 const SES = new AWS.SES();
 
 const geoData = (userInfo) => {
- if(!userInfo) return 'data not found';
+  if(!userInfo) return 'data not found';
 
- return `City: ${userInfo.city}\nCountry: ${userInfo.country}\nIP: ${userInfo.ip}`
+  const {city, region, country, ip } = userInfo
+
+return `
+City: ${city}
+Region: ${region}
+Country: ${country}
+IP: ${ip}
+`
 }
 
 function sendEmail(formData, callback) {
@@ -19,9 +26,17 @@ function sendEmail(formData, callback) {
       Body: {
         Text: {
           Charset: 'UTF-8',
-          Data: `${
-            formData.message
-          }\n\nName: ${formData.name}\nEmail: ${formData.email}\n${geoData(formData.userInfo)}\nUser Agent: ${formData.navigator.userAgent || 'maybe custom?'}`,
+          Data: `
+${formData.message} \n\n
+-----------
+Name: ${formData.name}
+Email: ${formData.email}
+City: ${formData.userInfo.city || 'empty'}
+Region: ${formData.userInfo.region || 'empty'}
+Country: ${formData.userInfo.country || 'empty'}
+IP: ${formData.userInfo.ip || 'empty'}
+User Agent: ${formData.navigator.userAgent || 'maybe custom?'}
+`,
         },
       },
       Subject: { Charset: 'UTF-8', Data: '[ivorpad.com] New Message' },

@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react'
 import styled from 'styled-components';
-// import { media } from './styles'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -146,7 +145,6 @@ class Menu extends Component {
   handleMenuOpen = (e) => {
     e.preventDefault();
 
-    const menu = document.querySelector('.navbar__menu');
     const button = this.toggleButton;
 
     const expanded = button.getAttribute('aria-expanded') === 'true'

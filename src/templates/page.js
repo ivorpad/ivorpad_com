@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../components/layout'
 import { graphql } from 'gatsby'
-import Helmet from 'react-helmet'
+import {Helmet} from 'react-helmet'
 import { PageWrapper } from '../components/styles';
 
 export default ({ data, location }) => {

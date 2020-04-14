@@ -1,4 +1,4 @@
-import { injectGlobal } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 import { theme, media } from '../components/styles'
 import { lighten } from 'polished'
 
@@ -23,9 +23,8 @@ const ios = () => {
   return false;
 }
 
-export const injectGlobalStyles = () => {
-  return injectGlobal`
-  :root {
+export const GlobalStyle = createGlobalStyle`
+    :root {
     font-size: 62.5%;
   }
 
@@ -91,5 +90,5 @@ export const injectGlobalStyles = () => {
     gap: 2em;
     grid-gap: 2em; /* firefox */
   }
+
 `
-}

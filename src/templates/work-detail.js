@@ -3,7 +3,7 @@ import { PageRenderer } from 'gatsby'
 import Layout from '../components/layout'
 import styled from 'styled-components'
 import { media } from '../components/styles'
-import Helmet from 'react-helmet'
+import {Helmet} from 'react-helmet'
 
 const WorkWrapper = styled.div`
 

@@ -1,32 +1,31 @@
 import React from 'react'
-import Helmet from 'react-helmet'
+import { Helmet } from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 import { Container } from './styles'
 import { ThemeProvider } from 'styled-components'
 import Header from './header'
 import Footer from './Footer'
-import styled, { injectGlobal } from 'styled-components'
+import styled from 'styled-components'
 import { theme, media } from '../components/styles'
-import { lighten } from 'polished'
-import { injectGlobalStyles } from '../styles/globalStyles'
-
-injectGlobalStyles()
+import { GlobalStyle } from '../styles/globalStyles'
 
 const HomepageWrapper = styled.div`
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
+  
+  ${media.medium`
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  `}
 
   .main {
     flex: 1;
     margin-top: 3rem;
-    @media screen {
-    }
-    margin-bottom: 5rem;
-
     @media screen and (min-device-width: 1200px) and (max-device-width: 1600px) {
       margin-top: 10rem;
     }
+    ${media.large`
+      margin-top: 10rem;
+    `};
   }
 `
 
@@ -60,16 +59,17 @@ class Layout extends React.Component {
                   content:
                     'javascript, developer, senior developer, web, web developer, frontend developer',
                 },
+                {
+                  name: 'viewport',
+                  content: 'width=device-width,user-scalable=no'
+                }
               ]}
             />
             <HomepageWrapper>
               <ThemeProvider theme={theme}>
+                <GlobalStyle />
                 <Header siteTitle={data.site.siteMetadata.title} />
-              </ThemeProvider>
-              <ThemeProvider theme={theme}>
                 <Container className="main">{children}</Container>
-              </ThemeProvider>
-              <ThemeProvider theme={theme}>
                 <Container className="footer">
                   <Footer />
                 </Container>

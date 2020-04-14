@@ -3,7 +3,7 @@ import Layout from '../components/layout'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import { media } from '../components/styles'
-import Helmet from 'react-helmet'
+import {Helmet} from 'react-helmet'
 
 const BlogPostWrapper = styled.div`
   width: 100%;

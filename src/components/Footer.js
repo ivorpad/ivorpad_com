@@ -25,7 +25,7 @@ const Footer = () => {
   return <Fragment>
       <FooterWrapper>
         <div className="footer__left">
-          <p>&copy; 2018 Ivor Padilla</p>
+          <p>&copy; 2019 Ivor Padilla</p>
         </div>
         <div className="footer__right">
           <p>

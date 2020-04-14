@@ -5,7 +5,7 @@ import { theme } from '../components/styles'
 import moment from 'moment'
 import { Link } from 'gatsby'
 import { media } from '../components/styles'
-import Helmet from 'react-helmet'
+import {Helmet} from 'react-helmet'
 
 const WritingWrapper = styled.div`
   width: 100%;
@@ -82,13 +82,13 @@ export const WritingQuery = graphql`
           title {
             title
           }
-          featuredImage {
-            resize(width: 300) {
-              width
-              height
-              src
-            }
-          }
+          # featuredImage {
+          #   resize(width: 300) {
+          #     width
+          #     height
+          #     src
+          #   }
+          # }
         }
       }
     }

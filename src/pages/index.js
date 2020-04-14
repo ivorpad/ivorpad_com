@@ -5,13 +5,12 @@ import Layout from '../components/layout';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../components/styles'
 
-
 const IndexPage = (props) => (
-	<ThemeProvider theme={theme}>
-		<Layout>
-			<Introduction {...props} />
-		</Layout>
-	</ThemeProvider>
+  <ThemeProvider theme={theme}>
+    <Layout>
+      <Introduction {...props} />
+    </Layout>
+  </ThemeProvider>
 )
 
 export default IndexPage
