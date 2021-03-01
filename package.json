@@ -50,7 +50,7 @@
     "gatsby-plugin-styled-components": "^3.0.0",
     "gatsby-remark-prismjs": "^3.0.1",
     "prettier": "^2.0.4",
-    "prismjs": "^1.15.0",
+    "prismjs": "^1.23.0",
     "react-tooltip": "^4.2.3",
     "react-typography": "^0.16.13",
     "serverless-plugin-include-dependencies": "^4.1.0",
