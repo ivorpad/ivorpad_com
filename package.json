@@ -19,7 +19,7 @@
     "gatsby-source-contentful": "^2.2.7",
     "gatsby-transformer-remark": "^2.7.1",
     "iltorb": "^2.4.4",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.21",
     "moment": "^2.22.2",
     "path": "^0.12.7",
     "polished": "^3.5.1",
